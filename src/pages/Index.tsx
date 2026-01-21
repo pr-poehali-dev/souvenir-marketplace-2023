@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { Card } from "@/components/ui/card";
@@ -16,6 +16,7 @@ import {
 import { Slider } from "@/components/ui/slider";
 import { CartDrawer, CartItem } from "@/components/CartDrawer";
 import { useToast } from "@/hooks/use-toast";
+import { auth } from "@/lib/auth";
 import {
   Dialog,
   DialogContent,
@@ -131,6 +132,11 @@ const Index = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    setIsAuthenticated(auth.isAuthenticated());
+  }, []);
 
   const addToCart = (product: typeof products[0]) => {
     setCartItems((prev) => {
@@ -230,8 +236,10 @@ const Index = () => {
                   </Badge>
                 )}
               </Button>
-              <Button variant="ghost" size="icon">
-                <Icon name="User" size={24} />
+              <Button variant="ghost" size="icon" asChild>
+                <Link to={isAuthenticated ? "/profile" : "/login"}>
+                  <Icon name="User" size={24} />
+                </Link>
               </Button>
               <Button
                 variant="ghost"

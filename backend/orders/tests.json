@@ -1,0 +1,44 @@
+{
+  "tests": [
+    {
+      "name": "Get user orders",
+      "method": "GET",
+      "path": "/",
+      "headers": {
+        "X-User-Id": "1"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "orders": "array"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Create new order",
+      "method": "POST",
+      "path": "/",
+      "headers": {
+        "X-User-Id": "1"
+      },
+      "body": {
+        "items": [
+          {
+            "name": "Керамическая ваза",
+            "price": 3500,
+            "quantity": 1
+          }
+        ],
+        "total_amount": 3500,
+        "delivery_address": "г. Москва, ул. Примерная, д. 1",
+        "delivery_method": "delivery",
+        "payment_method": "card"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "order_id": "number"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
