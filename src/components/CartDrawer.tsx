@@ -50,6 +50,9 @@ export const CartDrawer = ({
   const [deliveryMethod, setDeliveryMethod] = useState("delivery");
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
     address: "",
     comment: "",
   });
@@ -87,7 +90,10 @@ export const CartDrawer = ({
         total,
         deliveryMethod === 'delivery' ? formData.address : 'Самовывоз из центра «БАЗА»',
         deliveryMethod,
-        paymentMethod
+        paymentMethod,
+        formData.name,
+        formData.email,
+        formData.phone
       );
 
       if (result.success) {
@@ -96,7 +102,7 @@ export const CartDrawer = ({
           description: `Заказ #${result.order_id} успешно создан. Проверьте личный кабинет.`,
         });
         onClearCart();
-        setFormData({ address: "", comment: "" });
+        setFormData({ name: "", email: "", phone: "", address: "", comment: "" });
         setIsCheckout(false);
         onClose();
       } else {
@@ -219,6 +225,47 @@ export const CartDrawer = ({
             <>
               <div className="flex-1 overflow-auto">
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <Label htmlFor="name" className="font-bold">
+                      ВАШЕ ИМЯ *
+                    </Label>
+                    <Input
+                      id="name"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Иван Иванов"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="email" className="font-bold">
+                      EMAIL *
+                    </Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="your@email.com"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="phone" className="font-bold">
+                      ТЕЛЕФОН *
+                    </Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="+7 900 000-00-00"
+                    />
+                  </div>
+
                   <div>
                     <Label className="font-bold mb-3 block">СПОСОБ ПОЛУЧЕНИЯ</Label>
                     <RadioGroup value={deliveryMethod} onValueChange={setDeliveryMethod}>

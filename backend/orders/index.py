@@ -90,6 +90,9 @@ def handler(event: dict, context) -> dict:
             delivery_address = body.get('delivery_address', '')
             delivery_method = body.get('delivery_method', 'pickup')
             payment_method = body.get('payment_method', 'cash')
+            customer_name = body.get('customer_name', '')
+            customer_email = body.get('customer_email', '')
+            customer_phone = body.get('customer_phone', '')
             
             if not items or not total_amount:
                 return {
@@ -100,10 +103,12 @@ def handler(event: dict, context) -> dict:
                 }
             
             cur.execute('''
-                INSERT INTO orders (user_id, total_amount, delivery_address, delivery_method, payment_method)
-                VALUES (%s, %s, %s, %s, %s)
+                INSERT INTO orders (user_id, total_amount, delivery_address, delivery_method, payment_method, 
+                                    customer_name, customer_email, customer_phone)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                 RETURNING id
-            ''', (user_id, total_amount, delivery_address, delivery_method, payment_method))
+            ''', (user_id, total_amount, delivery_address, delivery_method, payment_method, 
+                  customer_name, customer_email, customer_phone))
             
             order_id = cur.fetchone()[0]
             
