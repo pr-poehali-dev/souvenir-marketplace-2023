@@ -221,9 +221,9 @@ const Index = () => {
               <a href="#delivery" className="hover:text-primary transition-colors font-medium">
                 Доставка
               </a>
-              <a href="#contacts" className="hover:text-primary transition-colors font-medium">
+              <Link to="/contacts" className="hover:text-primary transition-colors font-medium">
                 Контакты
-              </a>
+              </Link>
             </nav>
 
             <div className="flex items-center gap-4">
@@ -271,9 +271,9 @@ const Index = () => {
                 <a href="#delivery" className="hover:text-primary transition-colors font-medium">
                   Доставка
                 </a>
-                <a href="#contacts" className="hover:text-primary transition-colors font-medium">
+                <Link to="/contacts" className="hover:text-primary transition-colors font-medium">
                   Контакты
-                </a>
+                </Link>
               </div>
             </nav>
           )}
@@ -593,15 +593,15 @@ const Index = () => {
             <div>
               <h5 className="font-bold mb-4">ИНФОРМАЦИЯ</h5>
               <div className="flex flex-col gap-2 text-sm">
-                <a href="#" className="hover:text-primary transition-colors">
+                <a href="#delivery" className="hover:text-primary transition-colors">
                   Доставка и оплата
                 </a>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link to="/contacts" className="hover:text-primary transition-colors">
                   Контакты
-                </a>
-                <a href="#" className="hover:text-primary transition-colors">
+                </Link>
+                <Link to={isAuthenticated ? "/profile" : "/login"} className="hover:text-primary transition-colors">
                   Личный кабинет
-                </a>
+                </Link>
               </div>
             </div>
             <div>
