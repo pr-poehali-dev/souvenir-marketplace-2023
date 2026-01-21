@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import TelegramButton from "@/components/WhatsAppButton";
 
 const masters = [
   {
@@ -312,7 +312,7 @@ const Masters = () => {
         </div>
       </section>
 
-      <WhatsAppButton />
+      <TelegramButton />
 
       <footer className="bg-card border-t border-border py-12 mt-20">
         <div className="container mx-auto px-4">

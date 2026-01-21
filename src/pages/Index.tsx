@@ -23,7 +23,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import TelegramButton from "@/components/WhatsAppButton";
 
 const products = [
   {
@@ -568,7 +568,7 @@ const Index = () => {
         </DialogContent>
       </Dialog>
 
-      <WhatsAppButton />
+      <TelegramButton />
 
       <footer className="bg-card border-t border-border py-12 mt-20">
         <div className="container mx-auto px-4">

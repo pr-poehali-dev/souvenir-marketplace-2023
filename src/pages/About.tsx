@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import TelegramButton from "@/components/WhatsAppButton";
 
 const About = () => {
   const [cartItems] = useState([]);
@@ -340,7 +340,7 @@ const About = () => {
         </div>
       </section>
 
-      <WhatsAppButton />
+      <TelegramButton />
 
       <footer className="bg-card border-t border-border py-12 mt-20">
         <div className="container mx-auto px-4">
