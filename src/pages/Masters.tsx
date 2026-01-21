@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import TelegramButton from "@/components/WhatsAppButton";
+import TelegramButton from "@/components/TelegramButton";
 
 const masters = [
   {

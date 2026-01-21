@@ -23,7 +23,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import TelegramButton from "@/components/WhatsAppButton";
+import TelegramButton from "@/components/TelegramButton";
 
 const products = [
   {

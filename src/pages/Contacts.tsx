@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
-import TelegramButton from "@/components/WhatsAppButton";
+import TelegramButton from "@/components/TelegramButton";
 
 const Contacts = () => {
   const { toast } = useToast();
