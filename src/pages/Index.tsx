@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { CartDrawer, CartItem } from "@/components/CartDrawer";
+import { useToast } from "@/hooks/use-toast";
 
 const products = [
   {
@@ -78,6 +79,7 @@ const masters = ["Все мастера", "Анна Смирнова", "Серг
 const materials = ["Все материалы", "Глина", "Дуб", "Орех", "Хлопок", "Лён"];
 
 const Index = () => {
+  const { toast } = useToast();
   const [selectedCategory, setSelectedCategory] = useState("Все");
   const [selectedMaster, setSelectedMaster] = useState("Все мастера");
   const [selectedMaterial, setSelectedMaterial] = useState("Все материалы");
@@ -90,10 +92,20 @@ const Index = () => {
     setCartItems((prev) => {
       const existing = prev.find((item) => item.id === product.id);
       if (existing) {
+        toast({
+          title: "Товар добавлен",
+          description: `${product.name} добавлен в корзину`,
+          duration: 2000,
+        });
         return prev.map((item) =>
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
+      toast({
+        title: "Товар добавлен",
+        description: `${product.name} добавлен в корзину`,
+        duration: 2000,
+      });
       return [...prev, { ...product, quantity: 1 }];
     });
   };
