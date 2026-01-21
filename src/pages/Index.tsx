@@ -161,9 +161,9 @@ const Index = () => {
               <Link to="/masters" className="hover:text-primary transition-colors font-medium">
                 Мастера
               </Link>
-              <a href="#about" className="hover:text-primary transition-colors font-medium">
+              <Link to="/about" className="hover:text-primary transition-colors font-medium">
                 О центре
-              </a>
+              </Link>
               <a href="#delivery" className="hover:text-primary transition-colors font-medium">
                 Доставка
               </a>
@@ -209,9 +209,9 @@ const Index = () => {
                 <Link to="/masters" className="hover:text-primary transition-colors font-medium">
                   Мастера
                 </Link>
-                <a href="#about" className="hover:text-primary transition-colors font-medium">
+                <Link to="/about" className="hover:text-primary transition-colors font-medium">
                   О центре
-                </a>
+                </Link>
                 <a href="#delivery" className="hover:text-primary transition-colors font-medium">
                   Доставка
                 </a>
@@ -425,9 +425,9 @@ const Index = () => {
                 <Link to="/masters" className="hover:text-primary transition-colors">
                   Мастера
                 </Link>
-                <a href="#about" className="hover:text-primary transition-colors">
+                <Link to="/about" className="hover:text-primary transition-colors">
                   О центре
-                </a>
+                </Link>
               </div>
             </div>
             <div>
