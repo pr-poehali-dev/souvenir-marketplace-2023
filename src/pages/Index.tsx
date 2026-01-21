@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -117,9 +118,9 @@ const Index = () => {
               <a href="#catalog" className="hover:text-primary transition-colors font-medium">
                 Каталог
               </a>
-              <a href="#masters" className="hover:text-primary transition-colors font-medium">
+              <Link to="/masters" className="hover:text-primary transition-colors font-medium">
                 Мастера
-              </a>
+              </Link>
               <a href="#about" className="hover:text-primary transition-colors font-medium">
                 О центре
               </a>
@@ -160,9 +161,9 @@ const Index = () => {
                 <a href="#catalog" className="hover:text-primary transition-colors font-medium">
                   Каталог
                 </a>
-                <a href="#masters" className="hover:text-primary transition-colors font-medium">
+                <Link to="/masters" className="hover:text-primary transition-colors font-medium">
                   Мастера
-                </a>
+                </Link>
                 <a href="#about" className="hover:text-primary transition-colors font-medium">
                   О центре
                 </a>
@@ -189,11 +190,11 @@ const Index = () => {
               Уникальные изделия ручной работы от мастеров Центра креативных индустрий в Нижнекамске
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold">
-                СМОТРЕТЬ КАТАЛОГ
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold" asChild>
+                <a href="#catalog">СМОТРЕТЬ КАТАЛОГ</a>
               </Button>
-              <Button size="lg" variant="outline" className="font-bold">
-                О МАСТЕРАХ
+              <Button size="lg" variant="outline" className="font-bold" asChild>
+                <Link to="/masters">О МАСТЕРАХ</Link>
               </Button>
             </div>
           </div>
@@ -365,13 +366,13 @@ const Index = () => {
             <div>
               <h5 className="font-bold mb-4">РАЗДЕЛЫ</h5>
               <div className="flex flex-col gap-2 text-sm">
-                <a href="#" className="hover:text-primary transition-colors">
+                <a href="#catalog" className="hover:text-primary transition-colors">
                   Каталог товаров
                 </a>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link to="/masters" className="hover:text-primary transition-colors">
                   Мастера
-                </a>
-                <a href="#" className="hover:text-primary transition-colors">
+                </Link>
+                <a href="#about" className="hover:text-primary transition-colors">
                   О центре
                 </a>
               </div>
