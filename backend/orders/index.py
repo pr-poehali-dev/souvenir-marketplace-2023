@@ -1,6 +1,7 @@
 import json
 import os
 import psycopg2
+from telegram_notifier import send_telegram_notification
 
 def get_db_connection():
     '''Подключение к базе данных'''
@@ -119,6 +120,18 @@ def handler(event: dict, context) -> dict:
                 ''', (order_id, item['name'], item['price'], item['quantity']))
             
             conn.commit()
+            
+            send_telegram_notification(
+                order_id=order_id,
+                customer_name=customer_name,
+                customer_email=customer_email,
+                customer_phone=customer_phone,
+                items=items,
+                total_amount=total_amount,
+                delivery_method=delivery_method,
+                delivery_address=delivery_address,
+                payment_method=payment_method
+            )
             
             return {
                 'statusCode': 200,
