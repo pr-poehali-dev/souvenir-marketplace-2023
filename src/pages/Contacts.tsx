@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Contacts = () => {
   const { toast } = useToast();
@@ -319,6 +320,8 @@ const Contacts = () => {
           </div>
         </div>
       </section>
+
+      <WhatsAppButton />
 
       <footer className="bg-card border-t border-border py-12 mt-20">
         <div className="container mx-auto px-4">
