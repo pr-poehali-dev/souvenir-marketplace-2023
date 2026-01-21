@@ -174,6 +174,10 @@ const Index = () => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   const filteredProducts = products.filter((product) => {
     const categoryMatch = selectedCategory === "Все" || product.category === selectedCategory;
     const masterMatch = selectedMaster === "Все мастера" || product.master === selectedMaster;
@@ -476,6 +480,7 @@ const Index = () => {
         items={cartItems}
         onUpdateQuantity={updateQuantity}
         onRemoveItem={removeFromCart}
+        onClearCart={clearCart}
       />
 
       <Dialog open={!!selectedProduct} onOpenChange={(open) => !open && setSelectedProduct(null)}>

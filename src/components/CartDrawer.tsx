@@ -11,7 +11,12 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { auth } from "@/lib/auth";
+import { ordersAPI } from "@/lib/api";
+import { useToast } from "@/hooks/use-toast";
 
 export interface CartItem {
   id: number;
@@ -28,6 +33,7 @@ interface CartDrawerProps {
   items: CartItem[];
   onUpdateQuantity: (id: number, quantity: number) => void;
   onRemoveItem: (id: number) => void;
+  onClearCart: () => void;
 }
 
 export const CartDrawer = ({
@@ -36,26 +42,79 @@ export const CartDrawer = ({
   items,
   onUpdateQuantity,
   onRemoveItem,
+  onClearCart,
 }: CartDrawerProps) => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const [isCheckout, setIsCheckout] = useState(false);
+  const [deliveryMethod, setDeliveryMethod] = useState("delivery");
+  const [paymentMethod, setPaymentMethod] = useState("card");
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
     address: "",
     comment: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert(
-      `Заказ оформлен!\n\nИмя: ${formData.name}\nТелефон: ${formData.phone}\nEmail: ${formData.email}\n\nТовары:\n${items.map((item) => `- ${item.name} x${item.quantity} = ${(item.price * item.quantity).toLocaleString()}₽`).join("\n")}\n\nИтого: ${total.toLocaleString()}₽`
-    );
-    setFormData({ name: "", phone: "", email: "", address: "", comment: "" });
-    setIsCheckout(false);
-    onClose();
+    
+    const user = auth.getUser();
+    if (!user) {
+      toast({
+        title: "Необходима авторизация",
+        description: "Войдите или зарегистрируйтесь для оформления заказа",
+        variant: "destructive",
+      });
+      navigate('/login');
+      onClose();
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const orderItems = items.map(item => ({
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+      }));
+
+      const result = await ordersAPI.createOrder(
+        user.id,
+        orderItems,
+        total,
+        deliveryMethod === 'delivery' ? formData.address : 'Самовывоз из центра «БАЗА»',
+        deliveryMethod,
+        paymentMethod
+      );
+
+      if (result.success) {
+        toast({
+          title: "Заказ оформлен!",
+          description: `Заказ #${result.order_id} успешно создан. Проверьте личный кабинет.`,
+        });
+        onClearCart();
+        setFormData({ address: "", comment: "" });
+        setIsCheckout(false);
+        onClose();
+      } else {
+        toast({
+          title: "Ошибка",
+          description: "Не удалось создать заказ",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Ошибка",
+        description: "Произошла ошибка при оформлении заказа",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -159,58 +218,56 @@ export const CartDrawer = ({
           ) : (
             <>
               <div className="flex-1 overflow-auto">
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <Label htmlFor="name" className="font-bold">
-                      ИМЯ *
-                    </Label>
-                    <Input
-                      id="name"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Иван Иванов"
-                    />
+                    <Label className="font-bold mb-3 block">СПОСОБ ПОЛУЧЕНИЯ</Label>
+                    <RadioGroup value={deliveryMethod} onValueChange={setDeliveryMethod}>
+                      <div className="flex items-center space-x-2 mb-2">
+                        <RadioGroupItem value="delivery" id="delivery" />
+                        <Label htmlFor="delivery" className="cursor-pointer">
+                          Доставка курьером
+                        </Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="pickup" id="pickup" />
+                        <Label htmlFor="pickup" className="cursor-pointer">
+                          Самовывоз из центра «БАЗА»
+                        </Label>
+                      </div>
+                    </RadioGroup>
                   </div>
 
-                  <div>
-                    <Label htmlFor="phone" className="font-bold">
-                      ТЕЛЕФОН *
-                    </Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="+7 (900) 000-00-00"
-                    />
-                  </div>
+                  {deliveryMethod === 'delivery' && (
+                    <div>
+                      <Label htmlFor="address" className="font-bold">
+                        АДРЕС ДОСТАВКИ *
+                      </Label>
+                      <Input
+                        id="address"
+                        required
+                        value={formData.address}
+                        onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                        placeholder="г. Нижнекамск, ул. Ленина, д. 1"
+                      />
+                    </div>
+                  )}
 
                   <div>
-                    <Label htmlFor="email" className="font-bold">
-                      EMAIL
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="example@mail.com"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="address" className="font-bold">
-                      АДРЕС ДОСТАВКИ *
-                    </Label>
-                    <Input
-                      id="address"
-                      required
-                      value={formData.address}
-                      onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                      placeholder="г. Нижнекамск, ул. Ленина, д. 1"
-                    />
+                    <Label className="font-bold mb-3 block">СПОСОБ ОПЛАТЫ</Label>
+                    <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
+                      <div className="flex items-center space-x-2 mb-2">
+                        <RadioGroupItem value="card" id="card" />
+                        <Label htmlFor="card" className="cursor-pointer">
+                          Картой онлайн
+                        </Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="cash" id="cash" />
+                        <Label htmlFor="cash" className="cursor-pointer">
+                          Наличными при получении
+                        </Label>
+                      </div>
+                    </RadioGroup>
                   </div>
 
                   <div>
@@ -262,8 +319,9 @@ export const CartDrawer = ({
                     <Button
                       type="submit"
                       className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+                      disabled={loading}
                     >
-                      ПОДТВЕРДИТЬ
+                      {loading ? 'ОФОРМЛЯЕМ...' : 'ПОДТВЕРДИТЬ'}
                     </Button>
                   </div>
                 </form>
