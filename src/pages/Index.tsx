@@ -16,6 +16,12 @@ import {
 import { Slider } from "@/components/ui/slider";
 import { CartDrawer, CartItem } from "@/components/CartDrawer";
 import { useToast } from "@/hooks/use-toast";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const products = [
   {
@@ -124,6 +130,7 @@ const Index = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
 
   const addToCart = (product: typeof products[0]) => {
     setCartItems((prev) => {
@@ -393,7 +400,8 @@ const Index = () => {
                 {filteredProducts.map((product) => (
                   <Card
                     key={product.id}
-                    className="group overflow-hidden hover:border-primary transition-all duration-300 animate-fade-in"
+                    className="group overflow-hidden hover:border-primary transition-all duration-300 animate-fade-in cursor-pointer"
+                    onClick={() => setSelectedProduct(product)}
                   >
                     <div className="aspect-square overflow-hidden bg-muted">
                       <img
@@ -461,6 +469,90 @@ const Index = () => {
         onUpdateQuantity={updateQuantity}
         onRemoveItem={removeFromCart}
       />
+
+      <Dialog open={!!selectedProduct} onOpenChange={(open) => !open && setSelectedProduct(null)}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          {selectedProduct && (
+            <div>
+              <DialogHeader>
+                <DialogTitle className="text-3xl font-black">{selectedProduct.name}</DialogTitle>
+              </DialogHeader>
+              
+              <div className="grid md:grid-cols-2 gap-8 mt-6">
+                <div>
+                  <div className="aspect-square overflow-hidden bg-muted rounded-lg mb-4">
+                    <img
+                      src={selectedProduct.image}
+                      alt={selectedProduct.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <Badge className="bg-secondary text-secondary-foreground">
+                        {selectedProduct.category}
+                      </Badge>
+                      <div className="flex items-center gap-1">
+                        <Icon name="Star" size={18} className="text-primary fill-primary" />
+                        <span className="font-bold">{selectedProduct.rating}</span>
+                        <span className="text-sm text-muted-foreground">({selectedProduct.reviewCount} отзывов)</span>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Мастер</p>
+                      <p className="font-bold">{selectedProduct.master}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Материал</p>
+                      <p className="font-bold">{selectedProduct.material}</p>
+                    </div>
+                    <Separator />
+                    <div className="flex items-center justify-between">
+                      <span className="text-3xl font-black text-primary">
+                        {selectedProduct.price.toLocaleString()}₽
+                      </span>
+                      <Button
+                        size="lg"
+                        className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          addToCart(selectedProduct);
+                        }}
+                      >
+                        ДОБАВИТЬ В КОРЗИНУ
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl font-bold mb-4">ОТЗЫВЫ ПОКУПАТЕЛЕЙ</h3>
+                  <div className="space-y-4">
+                    {selectedProduct.reviews.map((review, idx) => (
+                      <Card key={idx} className="p-4">
+                        <div className="flex items-start justify-between mb-2">
+                          <p className="font-bold">{review.author}</p>
+                          <div className="flex items-center gap-1">
+                            {Array.from({ length: 5 }).map((_, i) => (
+                              <Icon
+                                key={i}
+                                name="Star"
+                                size={14}
+                                className={i < review.rating ? "text-primary fill-primary" : "text-muted-foreground"}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                        <p className="text-muted-foreground">{review.text}</p>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
 
       <footer className="bg-card border-t border-border py-12 mt-20">
         <div className="container mx-auto px-4">
