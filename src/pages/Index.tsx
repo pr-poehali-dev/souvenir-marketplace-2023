@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
+import { CartDrawer, CartItem } from "@/components/CartDrawer";
 
 const products = [
   {
@@ -81,8 +82,35 @@ const Index = () => {
   const [selectedMaster, setSelectedMaster] = useState("Все мастера");
   const [selectedMaterial, setSelectedMaterial] = useState("Все материалы");
   const [priceRange, setPriceRange] = useState([0, 5000]);
-  const [cartCount, setCartCount] = useState(0);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const addToCart = (product: typeof products[0]) => {
+    setCartItems((prev) => {
+      const existing = prev.find((item) => item.id === product.id);
+      if (existing) {
+        return prev.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      }
+      return [...prev, { ...product, quantity: 1 }];
+    });
+  };
+
+  const updateQuantity = (id: number, quantity: number) => {
+    if (quantity <= 0) {
+      removeFromCart(id);
+      return;
+    }
+    setCartItems((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, quantity } : item))
+    );
+  };
+
+  const removeFromCart = (id: number) => {
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  };
 
   const filteredProducts = products.filter((product) => {
     const categoryMatch = selectedCategory === "Все" || product.category === selectedCategory;
@@ -133,11 +161,16 @@ const Index = () => {
             </nav>
 
             <div className="flex items-center gap-4">
-              <Button variant="ghost" size="icon" className="relative">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="relative"
+                onClick={() => setIsCartOpen(true)}
+              >
                 <Icon name="ShoppingCart" size={24} />
-                {cartCount > 0 && (
+                {cartItems.length > 0 && (
                   <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-primary text-primary-foreground">
-                    {cartCount}
+                    {cartItems.length}
                   </Badge>
                 )}
               </Button>
@@ -340,7 +373,7 @@ const Index = () => {
                         <Button
                           size="sm"
                           className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
-                          onClick={() => setCartCount(cartCount + 1)}
+                          onClick={() => addToCart(product)}
                         >
                           КУПИТЬ
                         </Button>
@@ -353,6 +386,14 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        items={cartItems}
+        onUpdateQuantity={updateQuantity}
+        onRemoveItem={removeFromCart}
+      />
 
       <footer className="bg-card border-t border-border py-12 mt-20">
         <div className="container mx-auto px-4">
