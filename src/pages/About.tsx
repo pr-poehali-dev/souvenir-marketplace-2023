@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import TelegramButton from "@/components/TelegramButton";
+import MaxButton from "@/components/MaxButton";
 
 const About = () => {
   const [cartItems] = useState([]);
@@ -341,6 +342,7 @@ const About = () => {
       </section>
 
       <TelegramButton />
+      <MaxButton />
 
       <footer className="bg-card border-t border-border py-12 mt-20">
         <div className="container mx-auto px-4">

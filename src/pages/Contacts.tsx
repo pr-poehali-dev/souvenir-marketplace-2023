@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import TelegramButton from "@/components/TelegramButton";
+import MaxButton from "@/components/MaxButton";
 
 const Contacts = () => {
   const { toast } = useToast();
@@ -322,6 +323,7 @@ const Contacts = () => {
       </section>
 
       <TelegramButton />
+      <MaxButton />
 
       <footer className="bg-card border-t border-border py-12 mt-20">
         <div className="container mx-auto px-4">

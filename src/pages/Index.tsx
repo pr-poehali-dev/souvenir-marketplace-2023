@@ -24,6 +24,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import TelegramButton from "@/components/TelegramButton";
+import MaxButton from "@/components/MaxButton";
 
 const products = [
   {
@@ -569,6 +570,7 @@ const Index = () => {
       </Dialog>
 
       <TelegramButton />
+      <MaxButton />
 
       <footer className="bg-card border-t border-border py-12 mt-20">
         <div className="container mx-auto px-4">

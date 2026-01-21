@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TelegramButton from "@/components/TelegramButton";
+import MaxButton from "@/components/MaxButton";
 
 const masters = [
   {
@@ -313,6 +314,7 @@ const Masters = () => {
       </section>
 
       <TelegramButton />
+      <MaxButton />
 
       <footer className="bg-card border-t border-border py-12 mt-20">
         <div className="container mx-auto px-4">
