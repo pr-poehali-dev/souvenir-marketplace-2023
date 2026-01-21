@@ -26,6 +26,13 @@ const products = [
     category: "Керамика",
     material: "Глина",
     image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/files/ca008c16-00de-496c-8e5a-d91430bb1ec0.jpg",
+    rating: 4.8,
+    reviewCount: 12,
+    reviews: [
+      { author: "Елена К.", text: "Потрясающая работа! Качество на высоте.", rating: 5 },
+      { author: "Игорь М.", text: "Очень красивая ваза, отличное дополнение к интерьеру.", rating: 5 },
+      { author: "Ольга П.", text: "Хорошая вещь, но ожидала чуть большего размера.", rating: 4 },
+    ],
   },
   {
     id: 2,
@@ -35,6 +42,12 @@ const products = [
     category: "Дерево",
     material: "Дуб",
     image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/files/411954cf-4b2f-4ba5-8933-b2a8e3c3642b.jpg",
+    rating: 5.0,
+    reviewCount: 18,
+    reviews: [
+      { author: "Дмитрий В.", text: "Супер качество! Массив дуба, отличная обработка.", rating: 5 },
+      { author: "Анна С.", text: "Лучшая доска, которую я покупала. Рекомендую!", rating: 5 },
+    ],
   },
   {
     id: 3,
@@ -44,6 +57,12 @@ const products = [
     category: "Текстиль",
     material: "Хлопок",
     image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/files/f318b2e5-f056-481f-84f0-ff007e635906.jpg",
+    rating: 4.5,
+    reviewCount: 8,
+    reviews: [
+      { author: "Мария Л.", text: "Удобная и вместительная сумка. Беру вторую!", rating: 5 },
+      { author: "Виктория Т.", text: "Качество хорошее, но хотелось бы больше расцветок.", rating: 4 },
+    ],
   },
   {
     id: 4,
@@ -53,6 +72,12 @@ const products = [
     category: "Керамика",
     material: "Глина",
     image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/files/ca008c16-00de-496c-8e5a-d91430bb1ec0.jpg",
+    rating: 4.9,
+    reviewCount: 15,
+    reviews: [
+      { author: "Светлана Б.", text: "Шикарная авторская работа! Очень довольна.", rating: 5 },
+      { author: "Алексей Н.", text: "Красивый дизайн, качественная керамика.", rating: 5 },
+    ],
   },
   {
     id: 5,
@@ -62,6 +87,12 @@ const products = [
     category: "Дерево",
     material: "Орех",
     image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/files/411954cf-4b2f-4ba5-8933-b2a8e3c3642b.jpg",
+    rating: 4.7,
+    reviewCount: 10,
+    reviews: [
+      { author: "Татьяна К.", text: "Отличная работа мастера. Шкатулка прочная и красивая.", rating: 5 },
+      { author: "Роман Г.", text: "Хорошее качество, но цена немного завышена.", rating: 4 },
+    ],
   },
   {
     id: 6,
@@ -71,6 +102,12 @@ const products = [
     category: "Текстиль",
     material: "Лён",
     image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/files/f318b2e5-f056-481f-84f0-ff007e635906.jpg",
+    rating: 4.6,
+    reviewCount: 7,
+    reviews: [
+      { author: "Ирина Д.", text: "Красивая подушка, вышивка аккуратная.", rating: 5 },
+      { author: "Максим П.", text: "Качество отличное, но размер маловат.", rating: 4 },
+    ],
   },
 ];
 
@@ -366,18 +403,36 @@ const Index = () => {
                       />
                     </div>
                     <div className="p-6">
-                      <Badge className="mb-3 bg-secondary text-secondary-foreground">
-                        {product.category}
-                      </Badge>
+                      <div className="flex items-center justify-between mb-3">
+                        <Badge className="bg-secondary text-secondary-foreground">
+                          {product.category}
+                        </Badge>
+                        <div className="flex items-center gap-1">
+                          <Icon name="Star" size={16} className="text-primary fill-primary" />
+                          <span className="font-bold text-sm">{product.rating}</span>
+                          <span className="text-xs text-muted-foreground">({product.reviewCount})</span>
+                        </div>
+                      </div>
                       <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
                         {product.name}
                       </h3>
                       <p className="text-sm text-muted-foreground mb-2">
                         Мастер: {product.master}
                       </p>
-                      <p className="text-sm text-muted-foreground mb-4">
+                      <p className="text-sm text-muted-foreground mb-3">
                         Материал: {product.material}
                       </p>
+                      
+                      {product.reviews.length > 0 && (
+                        <div className="mb-4 p-3 bg-muted/50 rounded">
+                          <p className="text-xs text-muted-foreground mb-1">
+                            <Icon name="MessageSquare" size={12} className="inline mr-1" />
+                            {product.reviews[0].author}
+                          </p>
+                          <p className="text-sm line-clamp-2">"{product.reviews[0].text}"</p>
+                        </div>
+                      )}
+                      
                       <div className="flex items-center justify-between">
                         <span className="text-2xl font-black text-primary">
                           {product.price.toLocaleString()}₽
