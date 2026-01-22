@@ -92,9 +92,21 @@ def handler(event: dict, context) -> dict:
             delivery_address = body.get('delivery_address', '')
             delivery_method = body.get('delivery_method', 'pickup')
             payment_method = body.get('payment_method', 'cash')
-            customer_name = body.get('customer_name', '')
-            customer_email = body.get('customer_email', '')
-            customer_phone = body.get('customer_phone', '')
+            
+            cur.execute('SELECT full_name, email, phone FROM users WHERE id = %s', (user_id,))
+            user_data = cur.fetchone()
+            
+            if not user_data:
+                return {
+                    'statusCode': 404,
+                    'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                    'body': json.dumps({'error': 'Пользователь не найден'}),
+                    'isBase64Encoded': False
+                }
+            
+            customer_name = user_data[0]
+            customer_email = user_data[1]
+            customer_phone = user_data[2] or ''
             
             if not items or not total_amount:
                 return {

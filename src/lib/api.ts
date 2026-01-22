@@ -71,10 +71,7 @@ export const ordersAPI = {
     totalAmount: number,
     deliveryAddress: string,
     deliveryMethod: string,
-    paymentMethod: string,
-    customerName?: string,
-    customerEmail?: string,
-    customerPhone?: string
+    paymentMethod: string
   ): Promise<{ success: boolean; order_id: number }> => {
     const response = await fetch(API_URLS.orders, {
       method: 'POST',
@@ -88,9 +85,6 @@ export const ordersAPI = {
         delivery_address: deliveryAddress,
         delivery_method: deliveryMethod,
         payment_method: paymentMethod,
-        customer_name: customerName,
-        customer_email: customerEmail,
-        customer_phone: customerPhone,
       }),
     });
     return response.json();
