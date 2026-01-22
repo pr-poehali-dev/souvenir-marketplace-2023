@@ -1,6 +1,7 @@
 const API_URLS = {
   auth: 'https://functions.poehali.dev/4ac1c8f2-8a33-4398-b0a3-09acc0517d6c',
   orders: 'https://functions.poehali.dev/0abbf59c-d3b9-42e2-ad33-2085128643c6',
+  profile: 'https://functions.poehali.dev/e1e4bbf6-bf79-479c-950b-d80d41148ead',
 };
 
 export interface User {
@@ -48,6 +49,31 @@ export const authAPI = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'login', email, password }),
+    });
+    return response.json();
+  },
+};
+
+export const profileAPI = {
+  getProfile: async (userId: number): Promise<{ user: User }> => {
+    const response = await fetch(API_URLS.profile, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-User-Id': userId.toString(),
+      },
+    });
+    return response.json();
+  },
+
+  updateProfile: async (userId: number, full_name: string, phone: string): Promise<{ success: boolean; user: User }> => {
+    const response = await fetch(API_URLS.profile, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-User-Id': userId.toString(),
+      },
+      body: JSON.stringify({ full_name, phone }),
     });
     return response.json();
   },

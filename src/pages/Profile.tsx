@@ -7,8 +7,10 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { auth } from "@/lib/auth";
-import { ordersAPI, Order } from "@/lib/api";
+import { ordersAPI, profileAPI, Order } from "@/lib/api";
 import { useToast } from "@/hooks/use-toast";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -17,6 +19,9 @@ const Profile = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editData, setEditData] = useState({ full_name: '', phone: '' });
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     if (!user) {
@@ -257,39 +262,133 @@ const Profile = () => {
 
             <TabsContent value="profile">
               <Card className="p-8">
-                <h2 className="text-2xl font-black mb-6">ИНФОРМАЦИЯ О ПРОФИЛЕ</h2>
-                
-                <div className="space-y-6">
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">Полное имя</p>
-                    <p className="text-lg font-bold">{user.full_name}</p>
-                  </div>
-
-                  <Separator />
-
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">Email</p>
-                    <p className="text-lg font-bold">{user.email}</p>
-                  </div>
-
-                  <Separator />
-
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">Телефон</p>
-                    <p className="text-lg font-bold">{user.phone || 'Не указан'}</p>
-                  </div>
-
-                  <Separator />
-
-                  <Button
-                    variant="destructive"
-                    className="font-bold"
-                    onClick={handleLogout}
-                  >
-                    <Icon name="LogOut" size={20} className="mr-2" />
-                    ВЫЙТИ ИЗ АККАУНТА
-                  </Button>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-2xl font-black">ИНФОРМАЦИЯ О ПРОФИЛЕ</h2>
+                  {!isEditing && (
+                    <Button
+                      variant="outline"
+                      className="font-bold"
+                      onClick={() => {
+                        setIsEditing(true);
+                        setEditData({ full_name: user.full_name, phone: user.phone || '' });
+                      }}
+                    >
+                      <Icon name="Edit" size={20} className="mr-2" />
+                      РЕДАКТИРОВАТЬ
+                    </Button>
+                  )}
                 </div>
+                
+                {!isEditing ? (
+                  <div className="space-y-6">
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">Полное имя</p>
+                      <p className="text-lg font-bold">{user.full_name}</p>
+                    </div>
+
+                    <Separator />
+
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">Email</p>
+                      <p className="text-lg font-bold">{user.email}</p>
+                    </div>
+
+                    <Separator />
+
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">Телефон</p>
+                      <p className="text-lg font-bold">{user.phone || 'Не указан'}</p>
+                    </div>
+
+                    <Separator />
+
+                    <Button
+                      variant="destructive"
+                      className="font-bold"
+                      onClick={handleLogout}
+                    >
+                      <Icon name="LogOut" size={20} className="mr-2" />
+                      ВЫЙТИ ИЗ АККАУНТА
+                    </Button>
+                  </div>
+                ) : (
+                  <form onSubmit={async (e) => {
+                    e.preventDefault();
+                    setSaving(true);
+                    try {
+                      const result = await profileAPI.updateProfile(user.id, editData.full_name, editData.phone);
+                      if (result.success) {
+                        setUser(result.user);
+                        auth.saveUser(result.user, auth.getToken() || '');
+                        toast({
+                          title: 'Профиль обновлен',
+                          description: 'Ваши данные успешно сохранены',
+                        });
+                        setIsEditing(false);
+                      }
+                    } catch (error) {
+                      toast({
+                        title: 'Ошибка',
+                        description: 'Не удалось обновить профиль',
+                        variant: 'destructive',
+                      });
+                    } finally {
+                      setSaving(false);
+                    }
+                  }} className="space-y-6">
+                    <div>
+                      <Label htmlFor="full_name" className="font-bold">ПОЛНОЕ ИМЯ *</Label>
+                      <Input
+                        id="full_name"
+                        required
+                        value={editData.full_name}
+                        onChange={(e) => setEditData({ ...editData, full_name: e.target.value })}
+                        placeholder="Иван Иванов"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="email_display" className="font-bold">EMAIL</Label>
+                      <Input
+                        id="email_display"
+                        value={user.email}
+                        disabled
+                        className="bg-muted"
+                      />
+                      <p className="text-sm text-muted-foreground mt-1">Email нельзя изменить</p>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="phone" className="font-bold">ТЕЛЕФОН</Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        value={editData.phone}
+                        onChange={(e) => setEditData({ ...editData, phone: e.target.value })}
+                        placeholder="+7 999 123-45-67"
+                      />
+                    </div>
+
+                    <div className="flex gap-3">
+                      <Button
+                        type="submit"
+                        className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+                        disabled={saving}
+                      >
+                        {saving ? 'СОХРАНЕНИЕ...' : 'СОХРАНИТЬ'}
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        className="font-bold"
+                        onClick={() => setIsEditing(false)}
+                        disabled={saving}
+                      >
+                        ОТМЕНА
+                      </Button>
+                    </div>
+                  </form>
+                )}
               </Card>
             </TabsContent>
           </Tabs>
