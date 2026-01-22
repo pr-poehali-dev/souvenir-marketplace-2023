@@ -110,10 +110,15 @@ const Masters = () => {
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
-            <Link to="/" className="flex items-center gap-8">
-              <div className="text-3xl font-black tracking-tight">
+            <Link to="/" className="flex items-center gap-3">
+              <img 
+                src="https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/bucket/7ba2c399-7e05-4810-bdb1-aaf9ff685cb8.jpg" 
+                alt="БАЗА" 
+                className="h-16 w-auto object-contain"
+              />
+              <div className="text-2xl font-black tracking-tight">
                 <span className="text-primary">БАЗА</span>
-                <span className="text-foreground text-sm block leading-none mt-1">
+                <span className="text-foreground text-xs block leading-none mt-1">
                   МАРКЕТПЛЕЙС
                 </span>
               </div>
