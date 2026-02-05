@@ -232,7 +232,7 @@ export const CartDrawer = ({
                       <div>
                         <p className="font-bold text-sm mb-2">САМОВЫВОЗ ИЗ ЦЕНТРА «БАЗА»</p>
                         <p className="text-sm text-muted-foreground mb-1">
-                          г. Нижнекамск, проспект Строителей, 48
+                          г. Нижнекамск, улица Лесная, 53
                         </p>
                         <p className="text-sm text-muted-foreground">
                           Пн-Пт: 10:00-20:00, Сб-Вс: 11:00-18:00
