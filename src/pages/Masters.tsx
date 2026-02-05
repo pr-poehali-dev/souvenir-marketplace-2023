@@ -85,9 +85,14 @@ const masters = [
 ];
 
 const Masters = () => {
-  const [cartCount] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedSpecialty, setSelectedSpecialty] = useState("Все");
+
+  const addToCart = (item: { id: number; title: string; price: number }) => {
+    setCartCount((prev) => prev + 1);
+    console.log("Добавлено в корзину:", item);
+  };
 
   const specialties = ["Все", "Керамика", "Дерево", "Текстиль"];
 
@@ -286,9 +291,18 @@ const Masters = () => {
                                 <h3 className="font-bold mb-2 group-hover:text-primary transition-colors">
                                   {item.title}
                                 </h3>
-                                <p className="text-xl font-black text-primary">
-                                  {item.price.toLocaleString()}₽
-                                </p>
+                                <div className="flex items-center justify-between gap-2 mb-3">
+                                  <p className="text-xl font-black text-primary">
+                                    {item.price.toLocaleString()}₽
+                                  </p>
+                                </div>
+                                <Button
+                                  onClick={() => addToCart(item)}
+                                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+                                >
+                                  <Icon name="ShoppingCart" size={18} className="mr-2" />
+                                  В КОРЗИНУ
+                                </Button>
                               </div>
                             </Card>
                           ))}
