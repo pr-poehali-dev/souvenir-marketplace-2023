@@ -230,9 +230,15 @@ export const CartDrawer = ({
                     <div className="flex items-start gap-3">
                       <Icon name="MapPin" size={20} className="text-primary mt-0.5" />
                       <div>
-                        <p className="font-bold text-sm mb-1">САМОВЫВОЗ ИЗ ЦЕНТРА «БАЗА»</p>
+                        <p className="font-bold text-sm mb-2">САМОВЫВОЗ ИЗ ЦЕНТРА «БАЗА»</p>
+                        <p className="text-sm text-muted-foreground mb-1">
+                          г. Нижнекамск, проспект Строителей, 48
+                        </p>
                         <p className="text-sm text-muted-foreground">
-                          Самовывоз из центра творчества и ремесел «БАЗА»
+                          Пн-Пт: 10:00-20:00, Сб-Вс: 11:00-18:00
+                        </p>
+                        <p className="text-sm text-primary font-medium mt-2">
+                          Тел: +7 (8555) 123-456
                         </p>
                       </div>
                     </div>
