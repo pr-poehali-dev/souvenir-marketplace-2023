@@ -88,10 +88,14 @@ const Masters = () => {
   const [cartCount, setCartCount] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedSpecialty, setSelectedSpecialty] = useState("Все");
+  const [notification, setNotification] = useState<{ show: boolean; title: string }>({ show: false, title: "" });
 
   const addToCart = (item: { id: number; title: string; price: number }) => {
     setCartCount((prev) => prev + 1);
-    console.log("Добавлено в корзину:", item);
+    setNotification({ show: true, title: item.title });
+    setTimeout(() => {
+      setNotification({ show: false, title: "" });
+    }, 3000);
   };
 
   const specialties = ["Все", "Керамика", "Дерево", "Текстиль"];
@@ -331,6 +335,22 @@ const Masters = () => {
           </div>
         </div>
       </section>
+
+      {notification.show && (
+        <div className="fixed bottom-8 right-8 z-50 animate-fade-in">
+          <Card className="p-4 shadow-lg border-primary bg-card">
+            <div className="flex items-center gap-3">
+              <div className="bg-primary/10 p-2 rounded-full">
+                <Icon name="CheckCircle" size={24} className="text-primary" />
+              </div>
+              <div>
+                <p className="font-bold">Добавлено в корзину</p>
+                <p className="text-sm text-muted-foreground">{notification.title}</p>
+              </div>
+            </div>
+          </Card>
+        </div>
+      )}
 
       <TelegramButton />
       <MaxButton />
