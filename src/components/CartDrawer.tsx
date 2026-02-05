@@ -47,8 +47,8 @@ export const CartDrawer = ({
   const navigate = useNavigate();
   const { toast } = useToast();
   const [isCheckout, setIsCheckout] = useState(false);
-  const [deliveryMethod, setDeliveryMethod] = useState("delivery");
-  const [paymentMethod, setPaymentMethod] = useState("card");
+  const [deliveryMethod] = useState("pickup");
+  const [paymentMethod] = useState("cash");
   const [formData, setFormData] = useState({
     address: "",
     comment: "",
@@ -85,9 +85,9 @@ export const CartDrawer = ({
         user.id,
         orderItems,
         total,
-        deliveryMethod === 'delivery' ? formData.address : 'Самовывоз из центра «БАЗА»',
-        deliveryMethod,
-        paymentMethod
+        'Самовывоз из центра «БАЗА»',
+        'pickup',
+        'cash'
       );
 
       if (result.success) {
@@ -226,55 +226,28 @@ export const CartDrawer = ({
                     </p>
                   </div>
 
-                  <div>
-                    <Label className="font-bold mb-3 block">СПОСОБ ПОЛУЧЕНИЯ</Label>
-                    <RadioGroup value={deliveryMethod} onValueChange={setDeliveryMethod}>
-                      <div className="flex items-center space-x-2 mb-2">
-                        <RadioGroupItem value="delivery" id="delivery" />
-                        <Label htmlFor="delivery" className="cursor-pointer">
-                          Доставка курьером
-                        </Label>
+                  <div className="bg-primary/10 p-4 rounded border border-primary/20">
+                    <div className="flex items-start gap-3">
+                      <Icon name="MapPin" size={20} className="text-primary mt-0.5" />
+                      <div>
+                        <p className="font-bold text-sm mb-1">САМОВЫВОЗ ИЗ ЦЕНТРА «БАЗА»</p>
+                        <p className="text-sm text-muted-foreground">
+                          Самовывоз из центра творчества и ремесел «БАЗА»
+                        </p>
                       </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="pickup" id="pickup" />
-                        <Label htmlFor="pickup" className="cursor-pointer">
-                          Самовывоз из центра «БАЗА»
-                        </Label>
-                      </div>
-                    </RadioGroup>
+                    </div>
                   </div>
 
-                  {deliveryMethod === 'delivery' && (
-                    <div>
-                      <Label htmlFor="address" className="font-bold">
-                        АДРЕС ДОСТАВКИ *
-                      </Label>
-                      <Input
-                        id="address"
-                        required
-                        value={formData.address}
-                        onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                        placeholder="г. Нижнекамск, ул. Ленина, д. 1"
-                      />
+                  <div className="bg-primary/10 p-4 rounded border border-primary/20">
+                    <div className="flex items-start gap-3">
+                      <Icon name="Wallet" size={20} className="text-primary mt-0.5" />
+                      <div>
+                        <p className="font-bold text-sm mb-1">ОПЛАТА НАЛИЧНЫМИ</p>
+                        <p className="text-sm text-muted-foreground">
+                          Оплата наличными при получении заказа
+                        </p>
+                      </div>
                     </div>
-                  )}
-
-                  <div>
-                    <Label className="font-bold mb-3 block">СПОСОБ ОПЛАТЫ</Label>
-                    <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
-                      <div className="flex items-center space-x-2 mb-2">
-                        <RadioGroupItem value="card" id="card" />
-                        <Label htmlFor="card" className="cursor-pointer">
-                          Картой онлайн
-                        </Label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="cash" id="cash" />
-                        <Label htmlFor="cash" className="cursor-pointer">
-                          Наличными при получении
-                        </Label>
-                      </div>
-                    </RadioGroup>
                   </div>
 
                   <div>
