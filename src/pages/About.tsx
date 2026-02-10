@@ -12,7 +12,7 @@ const About = () => {
   const [cartItems] = useState([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const features = [
+  const features: Array<{icon: string; title: string; description: string}> = [
     {
       icon: "Music",
       title: "Музыка",
@@ -66,13 +66,13 @@ const About = () => {
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-2 sm:gap-3">
               <img 
                 src="https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/bucket/7ba2c399-7e05-4810-bdb1-aaf9ff685cb8.jpg" 
                 alt="БАЗА" 
-                className="h-16 w-auto object-contain"
+                className="h-12 sm:h-16 w-auto object-contain"
               />
-              <div className="text-2xl font-black tracking-tight">
+              <div className="text-xl sm:text-2xl font-black tracking-tight">
                 <span className="text-primary">БАЗА</span>
                 <span className="text-foreground text-xs block leading-none mt-1">
                   МАРКЕТПЛЕЙС
@@ -151,61 +151,61 @@ const About = () => {
         </div>
       </header>
 
-      <section className="relative py-20 lg:py-32 overflow-hidden">
+      <section className="relative py-12 sm:py-20 lg:py-32 overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mb-16">
-            <h1 className="text-5xl lg:text-7xl font-black mb-6 leading-tight">
+          <div className="max-w-4xl mb-12 sm:mb-16">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black mb-4 sm:mb-6 leading-tight">
               ЦЕНТР КРЕАТИВНЫХ ИНДУСТРИЙ{" "}
               <span className="text-primary">«БАЗА»</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-base sm:text-xl text-muted-foreground mb-6 sm:mb-8">
               Место, где процветает творческий потенциал и воплощаются самые смелые идеи.
               Точка притяжения для резидентов, где каждый может реализовать свои творческие
               идеи в различных сферах искусства.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold w-full sm:w-auto"
                 asChild
               >
                 <Link to="/masters">НАШИ МАСТЕРА</Link>
               </Button>
-              <Button size="lg" variant="outline" className="font-bold" asChild>
+              <Button size="lg" variant="outline" className="font-bold w-full sm:w-auto" asChild>
                 <Link to="/">СМОТРЕТЬ ТОВАРЫ</Link>
               </Button>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-20">
             {stats.map((stat, index) => (
               <Card
                 key={index}
-                className="p-6 text-center animate-scale-in"
+                className="p-4 sm:p-6 text-center animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-4xl font-black text-primary mb-2">{stat.value}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="text-2xl sm:text-4xl font-black text-primary mb-1 sm:mb-2">{stat.value}</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-card">
+      <section className="py-12 sm:py-16 bg-card">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-black mb-12 text-center">ЧТО МЫ ПРЕДЛАГАЕМ</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 className="text-2xl sm:text-4xl font-black mb-8 sm:mb-12 text-center">ЧТО МЫ ПРЕДЛАГАЕМ</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className="p-6 hover:border-primary transition-all animate-fade-in"
+                className="p-5 sm:p-6 hover:border-primary transition-all animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                  <Icon name={feature.icon as any} size={32} className="text-primary" />
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mb-3 sm:mb-4">
+                  <Icon name={feature.icon} size={28} className="text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                <h3 className="text-lg sm:text-xl font-bold mb-2">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.description}</p>
               </Card>
             ))}
@@ -213,12 +213,12 @@ const About = () => {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-12 sm:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-black mb-12">О ЦЕНТРЕ</h2>
+            <h2 className="text-2xl sm:text-4xl font-black mb-8 sm:mb-12">О ЦЕНТРЕ</h2>
 
-            <div className="space-y-8 text-lg">
+            <div className="space-y-6 sm:space-y-8 text-base sm:text-lg">
               <div>
                 <h3 className="text-2xl font-bold mb-4 text-primary">Наша миссия</h3>
                 <p className="text-muted-foreground leading-relaxed">

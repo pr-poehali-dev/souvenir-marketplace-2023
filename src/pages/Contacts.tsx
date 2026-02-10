@@ -75,13 +75,13 @@ const Contacts = () => {
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-2 sm:gap-3">
               <img 
                 src="https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/bucket/7ba2c399-7e05-4810-bdb1-aaf9ff685cb8.jpg" 
                 alt="БАЗА" 
-                className="h-16 w-auto object-contain"
+                className="h-12 sm:h-16 w-auto object-contain"
               />
-              <div className="text-2xl font-black tracking-tight">
+              <div className="text-xl sm:text-2xl font-black tracking-tight">
                 <span className="text-primary">БАЗА</span>
                 <span className="text-foreground text-xs block leading-none mt-1">
                   МАРКЕТПЛЕЙС
@@ -119,20 +119,20 @@ const Contacts = () => {
         </div>
       </header>
 
-      <section className="py-20 relative">
+      <section className="py-12 sm:py-20 relative">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h1 className="text-6xl font-black mb-6 tracking-tight">
+          <div className="text-center mb-10 sm:mb-16">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 tracking-tight">
               КОНТАКТЫ
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto">
               Свяжитесь с нами удобным способом
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            <div className="space-y-8">
-              <Card className="p-8 border-2 border-border hover:border-primary transition-all">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
+            <div className="space-y-6 sm:space-y-8">
+              <Card className="p-5 sm:p-8 border-2 border-border hover:border-primary transition-all">
                 <div className="flex items-start gap-4">
                   <div className="bg-primary/10 p-4 rounded-lg">
                     <Icon
@@ -142,8 +142,8 @@ const Contacts = () => {
                     />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">АДРЕС</h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <h3 className="text-lg sm:text-xl font-bold mb-2">АДРЕС</h3>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                       г. Нижнекамск, Республика Татарстан
                       <br />
                       Центр креативных индустрий «База»
@@ -152,13 +152,13 @@ const Contacts = () => {
                 </div>
               </Card>
 
-              <Card className="p-8 border-2 border-border hover:border-primary transition-all">
+              <Card className="p-5 sm:p-8 border-2 border-border hover:border-primary transition-all">
                 <div className="flex items-start gap-4">
                   <div className="bg-primary/10 p-4 rounded-lg">
                     <Icon name="Phone" size={32} className="text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">ТЕЛЕФОНЫ</h3>
+                    <h3 className="text-lg sm:text-xl font-bold mb-2">ТЕЛЕФОНЫ</h3>
                     <div className="space-y-1">
                       <a
                         href="tel:+79503171377"
@@ -177,13 +177,13 @@ const Contacts = () => {
                 </div>
               </Card>
 
-              <Card className="p-8 border-2 border-border hover:border-primary transition-all">
+              <Card className="p-5 sm:p-8 border-2 border-border hover:border-primary transition-all">
                 <div className="flex items-start gap-4">
                   <div className="bg-primary/10 p-4 rounded-lg">
                     <Icon name="Mail" size={32} className="text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">EMAIL</h3>
+                    <h3 className="text-lg sm:text-xl font-bold mb-2">EMAIL</h3>
                     <a
                       href="mailto:@nkbaza"
                       className="text-muted-foreground hover:text-primary transition-colors"
@@ -194,14 +194,14 @@ const Contacts = () => {
                 </div>
               </Card>
 
-              <Card className="p-8 border-2 border-border hover:border-primary transition-all">
+              <Card className="p-5 sm:p-8 border-2 border-border hover:border-primary transition-all">
                 <div className="flex items-start gap-4">
                   <div className="bg-primary/10 p-4 rounded-lg">
                     <Icon name="Clock" size={32} className="text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">ВРЕМЯ РАБОТЫ</h3>
-                    <div className="text-muted-foreground space-y-1">
+                    <h3 className="text-lg sm:text-xl font-bold mb-2">ВРЕМЯ РАБОТЫ</h3>
+                    <div className="text-sm sm:text-base text-muted-foreground space-y-1">
                       <p>Понедельник - Пятница: 10:00 - 19:00</p>
                       <p>Суббота: 11:00 - 17:00</p>
                       <p>Воскресенье: выходной</p>
@@ -210,13 +210,13 @@ const Contacts = () => {
                 </div>
               </Card>
 
-              <Card className="p-8 border-2 border-border hover:border-primary transition-all">
+              <Card className="p-5 sm:p-8 border-2 border-border hover:border-primary transition-all">
                 <div className="flex items-start gap-4">
                   <div className="bg-primary/10 p-4 rounded-lg">
                     <Icon name="MessageCircle" size={32} className="text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">СОЦИАЛЬНЫЕ СЕТИ</h3>
+                    <h3 className="text-lg sm:text-xl font-bold mb-2">СОЦИАЛЬНЫЕ СЕТИ</h3>
                     <div className="flex gap-4 mt-3">
                       <a
                         href="#"
@@ -237,11 +237,11 @@ const Contacts = () => {
             </div>
 
             <div>
-              <Card className="p-8 border-2 border-border">
-                <h2 className="text-3xl font-black mb-6">
+              <Card className="p-5 sm:p-8 border-2 border-border">
+                <h2 className="text-2xl sm:text-3xl font-black mb-5 sm:mb-6">
                   НАПИШИТЕ НАМ
                 </h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
                   <div>
                     <label className="block text-sm font-bold mb-2">
                       ИМЯ *

@@ -201,13 +201,13 @@ const Index = () => {
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-2 sm:gap-3">
               <img 
                 src="https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/bucket/7ba2c399-7e05-4810-bdb1-aaf9ff685cb8.jpg" 
                 alt="БАЗА" 
-                className="h-16 w-auto object-contain"
+                className="h-12 sm:h-16 w-auto object-contain"
               />
-              <div className="text-2xl font-black tracking-tight">
+              <div className="text-xl sm:text-2xl font-black tracking-tight">
                 <span className="text-primary">БАЗА</span>
                 <span className="text-foreground text-xs block leading-none mt-1">
                   МАРКЕТПЛЕЙС
@@ -287,21 +287,21 @@ const Index = () => {
         </div>
       </header>
 
-      <section className="relative py-20 lg:py-32 overflow-hidden">
+      <section className="relative py-12 sm:py-20 lg:py-32 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
-            <h1 className="text-5xl lg:text-7xl font-black mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black mb-4 sm:mb-6 leading-tight">
               СУВЕНИРЫ ОТ РЕЗИДЕНТОВ{" "}
               <span className="text-primary">БАЗЫ</span>
             </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl">
+            <p className="text-base sm:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl">
               Уникальные изделия ручной работы от мастеров Центра креативных индустрий в Нижнекамске
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold" asChild>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold w-full sm:w-auto" asChild>
                 <a href="#catalog">СМОТРЕТЬ КАТАЛОГ</a>
               </Button>
-              <Button size="lg" variant="outline" className="font-bold" asChild>
+              <Button size="lg" variant="outline" className="font-bold w-full sm:w-auto" asChild>
                 <Link to="/masters">О МАСТЕРАХ</Link>
               </Button>
             </div>
@@ -309,11 +309,11 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="catalog" className="py-16 relative">
+      <section id="catalog" className="py-8 sm:py-16 relative">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-8">
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
             <aside className="lg:w-80 shrink-0">
-              <Card className="p-6 bg-card sticky top-24">
+              <Card className="p-4 sm:p-6 bg-card lg:sticky lg:top-24">
                 <h3 className="text-xl font-bold mb-6">ФИЛЬТРЫ</h3>
 
                 <div className="space-y-6">
@@ -402,15 +402,15 @@ const Index = () => {
             </aside>
 
             <div className="flex-1">
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-3xl font-bold">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4">
+                <h2 className="text-xl sm:text-3xl font-bold">
                   НАЙДЕНО: <span className="text-primary">{filteredProducts.length}</span>
                 </h2>
                 <div className="flex items-center gap-2">
-                  <Icon name="Grid3x3" size={20} className="text-muted-foreground" />
+                  <Icon name="Grid3x3" size={20} className="text-muted-foreground hidden sm:block" />
                   <Input
                     placeholder="Поиск..."
-                    className="w-64"
+                    className="w-full sm:w-64"
                   />
                 </div>
               </div>
@@ -429,7 +429,7 @@ const Index = () => {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <div className="p-6">
+                    <div className="p-4 sm:p-6">
                       <div className="flex items-center justify-between mb-3">
                         <Badge className="bg-secondary text-secondary-foreground">
                           {product.category}
@@ -440,7 +440,7 @@ const Index = () => {
                           <span className="text-xs text-muted-foreground">({product.reviewCount})</span>
                         </div>
                       </div>
-                      <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+                      <h3 className="text-base sm:text-lg font-bold mb-2 group-hover:text-primary transition-colors">
                         {product.name}
                       </h3>
                       <p className="text-sm text-muted-foreground mb-2">
@@ -460,13 +460,13 @@ const Index = () => {
                         </div>
                       )}
                       
-                      <div className="flex items-center justify-between">
-                        <span className="text-2xl font-black text-primary">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-xl sm:text-2xl font-black text-primary">
                           {product.price.toLocaleString()}₽
                         </span>
                         <Button
                           size="sm"
-                          className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+                          className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-xs sm:text-sm"
                           onClick={() => addToCart(product)}
                         >
                           КУПИТЬ
@@ -491,7 +491,7 @@ const Index = () => {
       />
 
       <Dialog open={!!selectedProduct} onOpenChange={(open) => !open && setSelectedProduct(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto w-[95vw] sm:w-full">
           {selectedProduct && (
             <div>
               <DialogHeader>
@@ -636,24 +636,24 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="delivery" className="py-20 bg-background">
+      <section id="delivery" className="py-12 sm:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-4xl lg:text-5xl font-black mb-6">
+          <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 sm:mb-6">
               ДОСТАВКА И <span className="text-primary">ОПЛАТА</span>
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-base sm:text-xl text-muted-foreground">
               Удобные способы получения и оплаты ваших заказов
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <Card className="p-8 bg-card">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
-                  <Icon name="Package" size={28} className="text-primary" />
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
+            <Card className="p-5 sm:p-8 bg-card">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Icon name="Package" size={24} className="text-primary sm:w-7 sm:h-7" />
                 </div>
-                <h3 className="text-2xl font-bold">ДОСТАВКА</h3>
+                <h3 className="text-xl sm:text-2xl font-bold">ДОСТАВКА</h3>
               </div>
               <div className="space-y-4 text-muted-foreground">
                 <div className="flex items-start gap-3">
@@ -680,12 +680,12 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="p-8 bg-card">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
-                  <Icon name="CreditCard" size={28} className="text-primary" />
+            <Card className="p-5 sm:p-8 bg-card">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Icon name="CreditCard" size={24} className="text-primary sm:w-7 sm:h-7" />
                 </div>
-                <h3 className="text-2xl font-bold">ОПЛАТА</h3>
+                <h3 className="text-xl sm:text-2xl font-bold">ОПЛАТА</h3>
               </div>
               <div className="space-y-4 text-muted-foreground">
                 <div className="flex items-start gap-3">
@@ -713,7 +713,7 @@ const Index = () => {
             </Card>
           </div>
 
-          <Card className="p-8 bg-primary/5 border-primary/20">
+          <Card className="p-5 sm:p-8 bg-primary/5 border-primary/20">
             <div className="flex items-start gap-4">
               <Icon name="Info" size={24} className="text-primary mt-1 flex-shrink-0" />
               <div>

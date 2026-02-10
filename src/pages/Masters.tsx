@@ -150,13 +150,13 @@ const Masters = () => {
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-2 sm:gap-3">
               <img 
                 src="https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/bucket/7ba2c399-7e05-4810-bdb1-aaf9ff685cb8.jpg" 
                 alt="БАЗА" 
-                className="h-16 w-auto object-contain"
+                className="h-12 sm:h-16 w-auto object-contain"
               />
-              <div className="text-2xl font-black tracking-tight">
+              <div className="text-xl sm:text-2xl font-black tracking-tight">
                 <span className="text-primary">БАЗА</span>
                 <span className="text-foreground text-xs block leading-none mt-1">
                   МАРКЕТПЛЕЙС
@@ -235,19 +235,19 @@ const Masters = () => {
         </div>
       </header>
 
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-12 sm:py-20 overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mb-12">
-            <h1 className="text-5xl lg:text-7xl font-black mb-6 leading-tight">
+          <div className="max-w-4xl mb-8 sm:mb-12">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black mb-4 sm:mb-6 leading-tight">
               НАШИ <span className="text-primary">МАСТЕРА</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl">
+            <p className="text-base sm:text-xl text-muted-foreground max-w-2xl">
               Талантливые резиденты Центра креативных индустрий «База», создающие уникальные
               изделия ручной работы
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-3 mb-12">
+          <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-12">
             {specialties.map((specialty) => (
               <Button
                 key={specialty}
@@ -260,14 +260,14 @@ const Masters = () => {
             ))}
           </div>
 
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {filteredMasters.map((master, index) => (
               <Card
                 key={master.id}
                 className="overflow-hidden animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="grid lg:grid-cols-[400px_1fr] gap-8 p-8">
+                <div className="grid lg:grid-cols-[400px_1fr] gap-6 sm:gap-8 p-5 sm:p-8">
                   <div>
                     <div className="aspect-square overflow-hidden bg-muted mb-6">
                       <img
@@ -292,11 +292,11 @@ const Masters = () => {
                   </div>
 
                   <div>
-                    <Badge className="mb-4 bg-primary text-primary-foreground">
+                    <Badge className="mb-3 sm:mb-4 bg-primary text-primary-foreground text-xs sm:text-sm">
                       {master.specialty}
                     </Badge>
-                    <h2 className="text-4xl font-black mb-4">{master.name}</h2>
-                    <p className="text-lg text-muted-foreground mb-8">{master.bio}</p>
+                    <h2 className="text-2xl sm:text-4xl font-black mb-3 sm:mb-4">{master.name}</h2>
+                    <p className="text-sm sm:text-lg text-muted-foreground mb-6 sm:mb-8">{master.bio}</p>
 
                     <Tabs defaultValue="portfolio" className="w-full">
                       <TabsList className="w-full justify-start mb-6">
