@@ -574,6 +574,68 @@ const Index = () => {
         </DialogContent>
       </Dialog>
 
+      <section className="py-20 bg-card border-y border-border">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="text-4xl lg:text-5xl font-black mb-6">
+              О ЦЕНТРЕ <span className="text-primary">«БАЗА»</span>
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Центр креативных индустрий в Нижнекамске — это место, где процветает творческий потенциал и воплощаются самые смелые идеи
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            <Card className="p-6 text-center bg-background">
+              <div className="text-4xl font-black text-primary mb-2">2000+</div>
+              <div className="text-sm text-muted-foreground">Кв. метров пространства</div>
+            </Card>
+            <Card className="p-6 text-center bg-background">
+              <div className="text-4xl font-black text-primary mb-2">50+</div>
+              <div className="text-sm text-muted-foreground">Творческих резидентов</div>
+            </Card>
+            <Card className="p-6 text-center bg-background">
+              <div className="text-4xl font-black text-primary mb-2">100+</div>
+              <div className="text-sm text-muted-foreground">Мероприятий в месяц</div>
+            </Card>
+            <Card className="p-6 text-center bg-background">
+              <div className="text-4xl font-black text-primary mb-2">5000+</div>
+              <div className="text-sm text-muted-foreground">Посетителей ежемесячно</div>
+            </Card>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <Card className="p-6 bg-background">
+              <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <Icon name="Palette" size={28} className="text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Дизайн и искусство</h3>
+              <p className="text-muted-foreground">Мастерские художников, дизайнеров и керамистов с профессиональным оборудованием</p>
+            </Card>
+            <Card className="p-6 bg-background">
+              <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <Icon name="Scissors" size={28} className="text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Текстиль</h3>
+              <p className="text-muted-foreground">Швейные мастерские для создания уникальной одежды и текстильных изделий</p>
+            </Card>
+            <Card className="p-6 bg-background">
+              <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <Icon name="Music" size={28} className="text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Музыка и танцы</h3>
+              <p className="text-muted-foreground">Студия звукозаписи, концертные залы и танцевальные пространства</p>
+            </Card>
+          </div>
+
+          <div className="text-center">
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold" asChild>
+              <Link to="/about">УЗНАТЬ БОЛЬШЕ О ЦЕНТРЕ</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <TelegramButton />
       <MaxButton />
 
