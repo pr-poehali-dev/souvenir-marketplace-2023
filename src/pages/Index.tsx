@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/dialog";
 import TelegramButton from "@/components/TelegramButton";
 import MaxButton from "@/components/MaxButton";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 const products = [
   {
@@ -416,12 +417,12 @@ const Index = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {filteredProducts.map((product) => (
-                  <Card
-                    key={product.id}
-                    className="group overflow-hidden hover:border-primary transition-all duration-300 animate-fade-in cursor-pointer"
-                    onClick={() => setSelectedProduct(product)}
-                  >
+                {filteredProducts.map((product, index) => (
+                  <ScrollReveal key={product.id} delay={index * 50}>
+                    <Card
+                      className="group overflow-hidden hover:border-primary transition-all duration-300 cursor-pointer h-full"
+                      onClick={() => setSelectedProduct(product)}
+                    >
                     <div className="aspect-square overflow-hidden bg-muted">
                       <img
                         src={product.image}
@@ -474,6 +475,7 @@ const Index = () => {
                       </div>
                     </div>
                   </Card>
+                  </ScrollReveal>
                 ))}
               </div>
             </div>
@@ -638,17 +640,20 @@ const Index = () => {
 
       <section id="delivery" className="py-12 sm:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 sm:mb-6">
-              ДОСТАВКА И <span className="text-primary">ОПЛАТА</span>
-            </h2>
-            <p className="text-base sm:text-xl text-muted-foreground">
-              Удобные способы получения и оплаты ваших заказов
-            </p>
-          </div>
+          <ScrollReveal>
+            <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 sm:mb-6">
+                ДОСТАВКА И <span className="text-primary">ОПЛАТА</span>
+              </h2>
+              <p className="text-base sm:text-xl text-muted-foreground">
+                Удобные способы получения и оплаты ваших заказов
+              </p>
+            </div>
+          </ScrollReveal>
 
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
-            <Card className="p-5 sm:p-8 bg-card">
+            <ScrollReveal delay={100}>
+              <Card className="p-5 sm:p-8 bg-card h-full">
               <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-full flex items-center justify-center">
                   <Icon name="Package" size={24} className="text-primary sm:w-7 sm:h-7" />
@@ -679,54 +684,59 @@ const Index = () => {
                 </div>
               </div>
             </Card>
+            </ScrollReveal>
 
-            <Card className="p-5 sm:p-8 bg-card">
-              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-full flex items-center justify-center">
-                  <Icon name="CreditCard" size={24} className="text-primary sm:w-7 sm:h-7" />
+            <ScrollReveal delay={200}>
+              <Card className="p-5 sm:p-8 bg-card h-full">
+                <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-full flex items-center justify-center">
+                    <Icon name="CreditCard" size={24} className="text-primary sm:w-7 sm:h-7" />
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold">ОПЛАТА</h3>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold">ОПЛАТА</h3>
-              </div>
-              <div className="space-y-4 text-muted-foreground">
-                <div className="flex items-start gap-3">
-                  <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-foreground">Онлайн-оплата картой</p>
-                    <p className="text-sm">Безопасная оплата через платежную систему</p>
+                <div className="space-y-4 text-muted-foreground">
+                  <div className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="font-semibold text-foreground">Онлайн-оплата картой</p>
+                      <p className="text-sm">Безопасная оплата через платежную систему</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="font-semibold text-foreground">Оплата при получении</p>
+                      <p className="text-sm">Наличными или картой при самовывозе</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="font-semibold text-foreground">Оплата по счету</p>
+                      <p className="text-sm">Для юридических лиц с НДС</p>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-foreground">Оплата при получении</p>
-                    <p className="text-sm">Наличными или картой при самовывозе</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-foreground">Оплата по счету</p>
-                    <p className="text-sm">Для юридических лиц с НДС</p>
+              </Card>
+            </ScrollReveal>
+          </div>
+
+          <ScrollReveal delay={300}>
+            <Card className="p-5 sm:p-8 bg-primary/5 border-primary/20">
+              <div className="flex items-start gap-4">
+                <Icon name="Info" size={24} className="text-primary mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="font-bold text-lg mb-2">ВАЖНАЯ ИНФОРМАЦИЯ</h4>
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <p>• Бесплатная доставка по Нижнекамску при заказе от 5000 ₽</p>
+                    <p>• Возврат товара возможен в течение 14 дней при сохранении товарного вида</p>
+                    <p>• Авторские изделия изготавливаются на заказ, срок изготовления 3-7 дней</p>
+                    <p>• При оформлении заказа вы получите СМС с трек-номером для отслеживания</p>
                   </div>
                 </div>
               </div>
             </Card>
-          </div>
-
-          <Card className="p-5 sm:p-8 bg-primary/5 border-primary/20">
-            <div className="flex items-start gap-4">
-              <Icon name="Info" size={24} className="text-primary mt-1 flex-shrink-0" />
-              <div>
-                <h4 className="font-bold text-lg mb-2">ВАЖНАЯ ИНФОРМАЦИЯ</h4>
-                <div className="space-y-2 text-sm text-muted-foreground">
-                  <p>• Бесплатная доставка по Нижнекамску при заказе от 5000 ₽</p>
-                  <p>• Возврат товара возможен в течение 14 дней при сохранении товарного вида</p>
-                  <p>• Авторские изделия изготавливаются на заказ, срок изготовления 3-7 дней</p>
-                  <p>• При оформлении заказа вы получите СМС с трек-номером для отслеживания</p>
-                </div>
-              </div>
-            </div>
-          </Card>
+          </ScrollReveal>
         </div>
       </section>
 
