@@ -636,6 +636,100 @@ const Index = () => {
         </div>
       </section>
 
+      <section id="delivery" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="text-4xl lg:text-5xl font-black mb-6">
+              ДОСТАВКА И <span className="text-primary">ОПЛАТА</span>
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Удобные способы получения и оплаты ваших заказов
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <Card className="p-8 bg-card">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Icon name="Package" size={28} className="text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold">ДОСТАВКА</h3>
+              </div>
+              <div className="space-y-4 text-muted-foreground">
+                <div className="flex items-start gap-3">
+                  <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-foreground">Самовывоз из центра</p>
+                    <p className="text-sm">Бесплатно. Готово к выдаче в течение 1 часа</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-foreground">Доставка по Нижнекамску</p>
+                    <p className="text-sm">300 ₽. Доставим в течение 1-2 дней</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-foreground">Доставка по России</p>
+                    <p className="text-sm">От 500 ₽. Почта России или СДЭК (3-7 дней)</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-8 bg-card">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Icon name="CreditCard" size={28} className="text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold">ОПЛАТА</h3>
+              </div>
+              <div className="space-y-4 text-muted-foreground">
+                <div className="flex items-start gap-3">
+                  <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-foreground">Онлайн-оплата картой</p>
+                    <p className="text-sm">Безопасная оплата через платежную систему</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-foreground">Оплата при получении</p>
+                    <p className="text-sm">Наличными или картой при самовывозе</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-foreground">Оплата по счету</p>
+                    <p className="text-sm">Для юридических лиц с НДС</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+
+          <Card className="p-8 bg-primary/5 border-primary/20">
+            <div className="flex items-start gap-4">
+              <Icon name="Info" size={24} className="text-primary mt-1 flex-shrink-0" />
+              <div>
+                <h4 className="font-bold text-lg mb-2">ВАЖНАЯ ИНФОРМАЦИЯ</h4>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <p>• Бесплатная доставка по Нижнекамску при заказе от 5000 ₽</p>
+                  <p>• Возврат товара возможен в течение 14 дней при сохранении товарного вида</p>
+                  <p>• Авторские изделия изготавливаются на заказ, срок изготовления 3-7 дней</p>
+                  <p>• При оформлении заказа вы получите СМС с трек-номером для отслеживания</p>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+
       <TelegramButton />
       <MaxButton />
 
