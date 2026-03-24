@@ -227,16 +227,22 @@ const Contacts = () => {
                     <h3 className="text-lg sm:text-xl font-bold mb-2">СОЦИАЛЬНЫЕ СЕТИ</h3>
                     <div className="flex gap-4 mt-3">
                       <a
-                        href="#"
-                        className="bg-primary/10 hover:bg-primary/20 p-3 rounded-lg transition-colors"
+                        href="https://vk.com/bazik_nk"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-primary/10 hover:bg-primary/20 p-3 rounded-lg transition-colors flex items-center gap-2"
                       >
-                        <Icon name="Instagram" size={24} className="text-primary" />
+                        <Icon name="Users" size={24} className="text-primary" />
+                        <span className="text-sm font-medium text-primary">ВКонтакте</span>
                       </a>
                       <a
-                        href="#"
-                        className="bg-primary/10 hover:bg-primary/20 p-3 rounded-lg transition-colors"
+                        href="https://t.me/nkBaza"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-primary/10 hover:bg-primary/20 p-3 rounded-lg transition-colors flex items-center gap-2"
                       >
-                        <Icon name="MessageCircle" size={24} className="text-primary" />
+                        <Icon name="Send" size={24} className="text-primary" />
+                        <span className="text-sm font-medium text-primary">Telegram</span>
                       </a>
                     </div>
                   </div>
