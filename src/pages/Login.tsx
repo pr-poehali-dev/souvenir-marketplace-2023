@@ -292,7 +292,14 @@ const Login = () => {
                     />
                     <label htmlFor="register-consent" className="text-sm cursor-pointer leading-relaxed">
                       Я даю согласие на{' '}
-                      <span className="font-semibold text-foreground">обработку персональных данных</span>{' '}
+                      <Link
+                        to="/privacy"
+                        target="_blank"
+                        className="font-semibold text-primary underline underline-offset-2 hover:text-primary/80"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        обработку персональных данных
+                      </Link>{' '}
                       в соответствии с ФЗ №152 и принимаю условия использования сервиса.
                     </label>
                   </div>
