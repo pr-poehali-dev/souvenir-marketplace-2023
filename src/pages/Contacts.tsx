@@ -134,7 +134,7 @@ const Contacts = () => {
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
             <div className="space-y-6 sm:space-y-8">
               <a
-                href="https://yandex.ru/maps/?text=Нижнекамск+Центр+креативных+индустрий+База"
+                href="https://yandex.ru/maps/?text=Нижнекамск+ул.+Лесная+53"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block"
@@ -151,7 +151,7 @@ const Contacts = () => {
                     <div>
                       <h3 className="text-lg sm:text-xl font-bold mb-2">АДРЕС</h3>
                       <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                        г. Нижнекамск, Республика Татарстан
+                        г. Нижнекамск, ул. Лесная 53, 55
                         <br />
                         Центр креативных индустрий «База»
                       </p>
