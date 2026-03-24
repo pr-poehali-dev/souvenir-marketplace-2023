@@ -134,6 +134,7 @@ const Index = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -338,9 +339,19 @@ const Index = () => {
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
             <aside className="lg:w-80 shrink-0">
               <Card className="p-4 sm:p-6 bg-card lg:sticky lg:top-24">
-                <h3 className="text-xl font-bold mb-6">ФИЛЬТРЫ</h3>
+                <button
+                  className="flex items-center justify-between w-full lg:cursor-default"
+                  onClick={() => setFiltersOpen(!filtersOpen)}
+                >
+                  <h3 className="text-xl font-bold">ФИЛЬТРЫ</h3>
+                  <Icon
+                    name={filtersOpen ? "ChevronUp" : "ChevronDown"}
+                    size={20}
+                    className="lg:hidden text-muted-foreground"
+                  />
+                </button>
 
-                <div className="space-y-6">
+                <div className={`space-y-6 mt-6 ${filtersOpen ? "block" : "hidden"} lg:block`}>
                   <div>
                     <label className="text-sm font-bold mb-3 block">КАТЕГОРИЯ</label>
                     <div className="flex flex-wrap gap-2">

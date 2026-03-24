@@ -173,13 +173,14 @@ const Profile = () => {
 
           <Tabs defaultValue="orders" className="w-full">
             <TabsList className="grid w-full grid-cols-3 mb-8">
-              <TabsTrigger value="orders" className="font-bold">
-                МОИ ЗАКАЗЫ
+              <TabsTrigger value="orders" className="font-bold text-xs sm:text-sm px-1 sm:px-3">
+                <span className="hidden sm:inline">МОИ ЗАКАЗЫ</span>
+                <span className="sm:hidden">ЗАКАЗЫ</span>
               </TabsTrigger>
-              <TabsTrigger value="profile" className="font-bold">
+              <TabsTrigger value="profile" className="font-bold text-xs sm:text-sm px-1 sm:px-3">
                 ПРОФИЛЬ
               </TabsTrigger>
-              <TabsTrigger value="consent" className="font-bold">
+              <TabsTrigger value="consent" className="font-bold text-xs sm:text-sm px-1 sm:px-3">
                 СОГЛАСИЕ
               </TabsTrigger>
             </TabsList>
