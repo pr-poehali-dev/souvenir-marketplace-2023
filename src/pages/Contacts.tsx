@@ -194,10 +194,10 @@ const Contacts = () => {
                   <div>
                     <h3 className="text-lg sm:text-xl font-bold mb-2">EMAIL</h3>
                     <a
-                      href="mailto:@nkbaza"
+                      href="mailto:nk.baza@mail.ru"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      @nkbaza
+                      nk.baza@mail.ru
                     </a>
                   </div>
                 </div>
