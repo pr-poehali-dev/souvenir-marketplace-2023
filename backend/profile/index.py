@@ -16,7 +16,7 @@ def handler(event: dict, context) -> dict:
             'statusCode': 200,
             'headers': {
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET, PUT, OPTIONS',
+                'Access-Control-Allow-Methods': 'GET, PUT, PATCH, OPTIONS',
                 'Access-Control-Allow-Headers': 'Content-Type, X-User-Id'
             },
             'body': '',
@@ -39,7 +39,7 @@ def handler(event: dict, context) -> dict:
         
         if method == 'GET':
             cur.execute(
-                'SELECT id, email, full_name, phone FROM users WHERE id = %s',
+                'SELECT id, email, full_name, phone, personal_data_consent, consent_updated_at FROM users WHERE id = %s',
                 (user_id,)
             )
             user = cur.fetchone()
@@ -60,7 +60,9 @@ def handler(event: dict, context) -> dict:
                         'id': user[0],
                         'email': user[1],
                         'full_name': user[2],
-                        'phone': user[3]
+                        'phone': user[3],
+                        'personal_data_consent': user[4] or False,
+                        'consent_updated_at': user[5].isoformat() if user[5] else None
                     }
                 }),
                 'isBase64Encoded': False
@@ -80,7 +82,7 @@ def handler(event: dict, context) -> dict:
                 }
             
             cur.execute(
-                'UPDATE users SET full_name = %s, phone = %s WHERE id = %s RETURNING id, email, full_name, phone',
+                'UPDATE users SET full_name = %s, phone = %s WHERE id = %s RETURNING id, email, full_name, phone, personal_data_consent, consent_updated_at',
                 (full_name, phone, user_id)
             )
             updated_user = cur.fetchone()
@@ -103,7 +105,53 @@ def handler(event: dict, context) -> dict:
                         'id': updated_user[0],
                         'email': updated_user[1],
                         'full_name': updated_user[2],
-                        'phone': updated_user[3]
+                        'phone': updated_user[3],
+                        'personal_data_consent': updated_user[4] or False,
+                        'consent_updated_at': updated_user[5].isoformat() if updated_user[5] else None
+                    }
+                }),
+                'isBase64Encoded': False
+            }
+        
+        elif method == 'PATCH':
+            body = json.loads(event.get('body', '{}'))
+            consent = body.get('personal_data_consent')
+            
+            if consent is None:
+                return {
+                    'statusCode': 400,
+                    'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                    'body': json.dumps({'error': 'Поле personal_data_consent обязательно'}),
+                    'isBase64Encoded': False
+                }
+            
+            cur.execute(
+                'UPDATE users SET personal_data_consent = %s, consent_updated_at = NOW() WHERE id = %s RETURNING id, email, full_name, phone, personal_data_consent, consent_updated_at',
+                (bool(consent), user_id)
+            )
+            updated_user = cur.fetchone()
+            conn.commit()
+            
+            if not updated_user:
+                return {
+                    'statusCode': 404,
+                    'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                    'body': json.dumps({'error': 'Пользователь не найден'}),
+                    'isBase64Encoded': False
+                }
+            
+            return {
+                'statusCode': 200,
+                'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                'body': json.dumps({
+                    'success': True,
+                    'user': {
+                        'id': updated_user[0],
+                        'email': updated_user[1],
+                        'full_name': updated_user[2],
+                        'phone': updated_user[3],
+                        'personal_data_consent': updated_user[4] or False,
+                        'consent_updated_at': updated_user[5].isoformat() if updated_user[5] else None
                     }
                 }),
                 'isBase64Encoded': False

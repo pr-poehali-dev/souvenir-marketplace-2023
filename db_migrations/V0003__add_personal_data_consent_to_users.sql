@@ -1,0 +1,3 @@
+ALTER TABLE t_p11012073_souvenir_marketplace.users
+ADD COLUMN IF NOT EXISTS personal_data_consent BOOLEAN DEFAULT FALSE,
+ADD COLUMN IF NOT EXISTS consent_updated_at TIMESTAMP DEFAULT NULL;

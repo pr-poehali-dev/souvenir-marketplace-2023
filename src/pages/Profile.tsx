@@ -22,6 +22,8 @@ const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState({ full_name: '', phone: '' });
   const [saving, setSaving] = useState(false);
+  const [consent, setConsent] = useState<boolean>(user?.personal_data_consent || false);
+  const [consentSaving, setConsentSaving] = useState(false);
 
   useEffect(() => {
     if (!user) {
@@ -170,12 +172,15 @@ const Profile = () => {
           </div>
 
           <Tabs defaultValue="orders" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-8">
+            <TabsList className="grid w-full grid-cols-3 mb-8">
               <TabsTrigger value="orders" className="font-bold">
                 МОИ ЗАКАЗЫ
               </TabsTrigger>
               <TabsTrigger value="profile" className="font-bold">
                 ПРОФИЛЬ
+              </TabsTrigger>
+              <TabsTrigger value="consent" className="font-bold">
+                СОГЛАСИЕ
               </TabsTrigger>
             </TabsList>
 
@@ -203,7 +208,7 @@ const Profile = () => {
                         <div>
                           <div className="flex items-center gap-3 mb-2">
                             <h3 className="text-xl font-bold">Заказ #{order.id}</h3>
-                            <Badge variant={getStatusVariant(order.status) as any}>
+                            <Badge variant={getStatusVariant(order.status) as "default" | "secondary" | "destructive" | "outline"}>
                               {getStatusLabel(order.status)}
                             </Badge>
                           </div>
@@ -394,6 +399,79 @@ const Profile = () => {
                     </div>
                   </form>
                 )}
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="consent">
+              <Card className="p-8">
+                <h2 className="text-2xl font-black mb-2">СОГЛАСИЕ НА ОБРАБОТКУ ДАННЫХ</h2>
+                <p className="text-muted-foreground mb-8">
+                  Управление вашим согласием на обработку персональных данных в соответствии с ФЗ №152.
+                </p>
+
+                <div className="bg-muted/50 rounded-lg p-6 mb-8 text-sm text-muted-foreground space-y-3">
+                  <p className="font-bold text-foreground text-base">Что включает обработка персональных данных:</p>
+                  <p>• Хранение и использование вашего имени, email и телефона для оформления заказов</p>
+                  <p>• Отправка уведомлений о статусе заказов</p>
+                  <p>• Связь с вами по вопросам ваших покупок</p>
+                  <p>• Улучшение качества обслуживания</p>
+                  <p className="pt-2">
+                    Оператор данных: БАЗА Маркетплейс. Вы вправе отозвать согласие в любой момент, однако это может ограничить возможность оформления заказов.
+                  </p>
+                </div>
+
+                <div className="flex items-start gap-4 p-6 border rounded-lg mb-6">
+                  <input
+                    type="checkbox"
+                    id="consent-checkbox"
+                    checked={consent}
+                    onChange={(e) => setConsent(e.target.checked)}
+                    className="w-5 h-5 mt-0.5 accent-primary cursor-pointer flex-shrink-0"
+                  />
+                  <label htmlFor="consent-checkbox" className="cursor-pointer text-sm leading-relaxed">
+                    <span className="font-bold text-base block mb-1">Я даю согласие на обработку персональных данных</span>
+                    Подтверждаю, что ознакомлен(а) с условиями обработки персональных данных и даю согласие на их обработку в указанных целях.
+                  </label>
+                </div>
+
+                {user?.consent_updated_at && (
+                  <p className="text-sm text-muted-foreground mb-6">
+                    Последнее изменение: {new Date(user.consent_updated_at).toLocaleDateString('ru-RU', {
+                      year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                    })}
+                  </p>
+                )}
+
+                <Button
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+                  disabled={consentSaving}
+                  onClick={async () => {
+                    setConsentSaving(true);
+                    try {
+                      const result = await profileAPI.updateConsent(user.id, consent);
+                      if (result.success) {
+                        setUser(result.user);
+                        auth.saveUser(result.user, auth.getToken() || '');
+                        toast({
+                          title: consent ? 'Согласие принято' : 'Согласие отозвано',
+                          description: consent
+                            ? 'Вы дали согласие на обработку персональных данных'
+                            : 'Ваше согласие на обработку персональных данных отозвано',
+                        });
+                      }
+                    } catch {
+                      toast({
+                        title: 'Ошибка',
+                        description: 'Не удалось сохранить настройки',
+                        variant: 'destructive',
+                      });
+                    } finally {
+                      setConsentSaving(false);
+                    }
+                  }}
+                >
+                  {consentSaving ? 'СОХРАНЕНИЕ...' : 'СОХРАНИТЬ'}
+                </Button>
               </Card>
             </TabsContent>
           </Tabs>

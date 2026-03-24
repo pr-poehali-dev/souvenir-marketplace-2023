@@ -37,6 +37,22 @@
         }
       },
       "bodyMatcher": "partial"
+    },
+    {
+      "name": "Update consent",
+      "method": "PATCH",
+      "path": "/",
+      "headers": {
+        "X-User-Id": "1"
+      },
+      "body": {
+        "personal_data_consent": true
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
     }
   ]
 }

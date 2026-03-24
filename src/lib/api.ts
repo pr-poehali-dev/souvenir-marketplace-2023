@@ -9,6 +9,8 @@ export interface User {
   email: string;
   full_name: string;
   phone?: string;
+  personal_data_consent?: boolean;
+  consent_updated_at?: string | null;
 }
 
 export interface AuthResponse {
@@ -74,6 +76,18 @@ export const profileAPI = {
         'X-User-Id': userId.toString(),
       },
       body: JSON.stringify({ full_name, phone }),
+    });
+    return response.json();
+  },
+
+  updateConsent: async (userId: number, consent: boolean): Promise<{ success: boolean; user: User }> => {
+    const response = await fetch(API_URLS.profile, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-User-Id': userId.toString(),
+      },
+      body: JSON.stringify({ personal_data_consent: consent }),
     });
     return response.json();
   },
