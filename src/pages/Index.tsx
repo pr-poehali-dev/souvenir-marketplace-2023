@@ -241,6 +241,9 @@ const Index = () => {
               <a href="https://t.me/nkBaza" target="_blank" rel="noopener noreferrer" className="hidden lg:flex items-center justify-center w-9 h-9 rounded-md hover:bg-accent transition-colors text-muted-foreground hover:text-primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.26 13.5l-2.956-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.884.059z"/></svg>
               </a>
+              <a href="https://max.ru/id1651051381_gos" target="_blank" rel="noopener noreferrer" className="hidden lg:flex items-center justify-center w-9 h-9 rounded-md hover:bg-accent transition-colors text-muted-foreground hover:text-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="#7B2BF9"/><text x="12" y="17" textAnchor="middle" fill="white" fontSize="13" fontWeight="bold" fontFamily="Arial, sans-serif">M</text></svg>
+              </a>
               <Button
                 variant="ghost"
                 size="icon"
@@ -296,6 +299,10 @@ const Index = () => {
                   <a href="https://t.me/nkBaza" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-white font-medium transition-opacity hover:opacity-90" style={{backgroundColor: '#2AABEE'}}>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.26 13.5l-2.956-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.884.059z"/></svg>
                     Telegram
+                  </a>
+                  <a href="https://max.ru/id1651051381_gos" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-white font-medium transition-opacity hover:opacity-90" style={{backgroundColor: '#7B2BF9'}}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="white" fillOpacity="0.2"/><text x="12" y="17" textAnchor="middle" fill="white" fontSize="13" fontWeight="bold" fontFamily="Arial, sans-serif">M</text></svg>
+                    MAX
                   </a>
                 </div>
               </div>
@@ -803,6 +810,7 @@ const Index = () => {
                 <p>+7 (8555) 32-38-48</p>
                 <a href="https://vk.com/bazik_nk" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">ВКонтакте</a>
                 <a href="https://t.me/nkBaza" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Telegram</a>
+                <a href="https://max.ru/id1651051381_gos" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">MAX</a>
               </div>
             </div>
           </div>
