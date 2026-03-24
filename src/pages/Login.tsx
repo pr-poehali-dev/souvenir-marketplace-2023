@@ -22,6 +22,7 @@ const Login = () => {
     full_name: '',
     phone: '',
   });
+  const [consentChecked, setConsentChecked] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -66,7 +67,8 @@ const Login = () => {
         registerData.email,
         registerData.password,
         registerData.full_name,
-        registerData.phone
+        registerData.phone,
+        consentChecked
       );
 
       if (result.error) {
@@ -279,10 +281,26 @@ const Login = () => {
                     />
                   </div>
 
+                  <div className="flex items-start gap-3 p-4 border rounded-lg bg-muted/30">
+                    <input
+                      type="checkbox"
+                      id="register-consent"
+                      checked={consentChecked}
+                      onChange={(e) => setConsentChecked(e.target.checked)}
+                      className="w-4 h-4 mt-0.5 accent-primary cursor-pointer flex-shrink-0"
+                      required
+                    />
+                    <label htmlFor="register-consent" className="text-sm cursor-pointer leading-relaxed">
+                      Я даю согласие на{' '}
+                      <span className="font-semibold text-foreground">обработку персональных данных</span>{' '}
+                      в соответствии с ФЗ №152 и принимаю условия использования сервиса.
+                    </label>
+                  </div>
+
                   <Button
                     type="submit"
                     className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
-                    disabled={loading}
+                    disabled={loading || !consentChecked}
                   >
                     {loading ? 'РЕГИСТРИРУЕМСЯ...' : 'ЗАРЕГИСТРИРОВАТЬСЯ'}
                   </Button>

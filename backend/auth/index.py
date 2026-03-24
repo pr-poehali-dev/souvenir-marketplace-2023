@@ -54,12 +54,21 @@ def handler(event: dict, context) -> dict:
             password = body.get('password', '')
             full_name = body.get('full_name', '').strip()
             phone = body.get('phone', '').strip()
+            personal_data_consent = bool(body.get('personal_data_consent', False))
             
             if not email or not password or not full_name:
                 return {
                     'statusCode': 400,
                     'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                     'body': json.dumps({'error': 'Заполните все обязательные поля'}),
+                    'isBase64Encoded': False
+                }
+            
+            if not personal_data_consent:
+                return {
+                    'statusCode': 400,
+                    'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                    'body': json.dumps({'error': 'Необходимо дать согласие на обработку персональных данных'}),
                     'isBase64Encoded': False
                 }
             
@@ -74,8 +83,8 @@ def handler(event: dict, context) -> dict:
             
             password_hash = hash_password(password)
             cur.execute(
-                'INSERT INTO users (email, password_hash, full_name, phone) VALUES (%s, %s, %s, %s) RETURNING id',
-                (email, password_hash, full_name, phone)
+                'INSERT INTO users (email, password_hash, full_name, phone, personal_data_consent, consent_updated_at) VALUES (%s, %s, %s, %s, %s, NOW()) RETURNING id',
+                (email, password_hash, full_name, phone, personal_data_consent)
             )
             user_id = cur.fetchone()[0]
             conn.commit()
@@ -93,7 +102,8 @@ def handler(event: dict, context) -> dict:
                         'id': user_id,
                         'email': email,
                         'full_name': full_name,
-                        'phone': phone
+                        'phone': phone,
+                        'personal_data_consent': personal_data_consent
                     }
                 }),
                 'isBase64Encoded': False

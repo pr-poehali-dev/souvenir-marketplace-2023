@@ -37,11 +37,11 @@ export interface Order {
 }
 
 export const authAPI = {
-  register: async (email: string, password: string, full_name: string, phone: string): Promise<AuthResponse> => {
+  register: async (email: string, password: string, full_name: string, phone: string, personal_data_consent: boolean): Promise<AuthResponse> => {
     const response = await fetch(API_URLS.auth, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'register', email, password, full_name, phone }),
+      body: JSON.stringify({ action: 'register', email, password, full_name, phone, personal_data_consent }),
     });
     return response.json();
   },

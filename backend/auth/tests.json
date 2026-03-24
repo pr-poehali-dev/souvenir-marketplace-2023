@@ -9,7 +9,8 @@
         "email": "test@example.com",
         "password": "password123",
         "full_name": "Иван Иванов",
-        "phone": "+79001234567"
+        "phone": "+79001234567",
+        "personal_data_consent": true
       },
       "expectedStatus": 200,
       "expectedBody": {
