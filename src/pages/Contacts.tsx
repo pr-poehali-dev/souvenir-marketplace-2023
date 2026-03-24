@@ -19,6 +19,7 @@ const Contacts = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [agreed, setAgreed] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -300,10 +301,32 @@ const Contacts = () => {
                     />
                   </div>
 
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="agree"
+                      checked={agreed}
+                      onChange={(e) => setAgreed(e.target.checked)}
+                      className="mt-1 h-4 w-4 cursor-pointer accent-primary flex-shrink-0"
+                      required
+                    />
+                    <label htmlFor="agree" className="text-sm text-muted-foreground leading-snug cursor-pointer">
+                      Я согласен(а) на{" "}
+                      <a
+                        href="/privacy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary underline underline-offset-2 hover:opacity-80"
+                      >
+                        обработку персональных данных
+                      </a>
+                    </label>
+                  </div>
+
                   <Button
                     type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold py-6 text-lg"
+                    disabled={isSubmitting || !agreed}
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold py-6 text-lg disabled:opacity-50"
                   >
                     {isSubmitting ? "ОТПРАВКА..." : "ОТПРАВИТЬ"}
                   </Button>
