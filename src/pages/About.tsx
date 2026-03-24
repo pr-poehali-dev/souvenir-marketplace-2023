@@ -93,10 +93,10 @@ const About = () => {
               >
                 О центре
               </Link>
-              <a href="#delivery" className="hover:text-primary transition-colors font-medium">
+              <a href="/#delivery" className="hover:text-primary transition-colors font-medium">
                 Доставка
               </a>
-              <a href="#contacts" className="hover:text-primary transition-colors font-medium">
+              <a href="/#contacts" className="hover:text-primary transition-colors font-medium">
                 Контакты
               </a>
             </nav>
@@ -139,10 +139,10 @@ const About = () => {
                 >
                   О центре
                 </Link>
-                <a href="#delivery" className="hover:text-primary transition-colors font-medium">
+                <a href="/#delivery" className="hover:text-primary transition-colors font-medium">
                   Доставка
                 </a>
-                <a href="#contacts" className="hover:text-primary transition-colors font-medium">
+                <a href="/#contacts" className="hover:text-primary transition-colors font-medium">
                   Контакты
                 </a>
               </div>
