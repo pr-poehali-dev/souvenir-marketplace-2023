@@ -203,9 +203,8 @@ const Contacts = () => {
                   <div>
                     <h3 className="text-lg sm:text-xl font-bold mb-2">ВРЕМЯ РАБОТЫ</h3>
                     <div className="text-sm sm:text-base text-muted-foreground space-y-1">
-                      <p>Понедельник - Пятница: 10:00 - 19:00</p>
-                      <p>Суббота: 11:00 - 17:00</p>
-                      <p>Воскресенье: выходной</p>
+                      <p>Ежедневно: 10:00 — 22:00</p>
+                      <p>Без обеда и выходных</p>
                     </div>
                   </div>
                 </div>
