@@ -430,7 +430,16 @@ const Profile = () => {
                   />
                   <label htmlFor="consent-checkbox" className="cursor-pointer text-sm leading-relaxed">
                     <span className="font-bold text-base block mb-1">Я даю согласие на обработку персональных данных</span>
-                    Подтверждаю, что ознакомлен(а) с условиями обработки персональных данных и даю согласие на их обработку в указанных целях.
+                    Подтверждаю, что ознакомлен(а) с{" "}
+                    <Link
+                      to="/privacy"
+                      target="_blank"
+                      className="text-primary underline underline-offset-2 hover:opacity-80"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      политикой конфиденциальности
+                    </Link>{" "}
+                    и даю согласие на обработку персональных данных в указанных целях.
                   </label>
                 </div>
 
