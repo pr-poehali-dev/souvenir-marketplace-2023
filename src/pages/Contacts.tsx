@@ -389,8 +389,12 @@ const Contacts = () => {
             </div>
           </div>
           <Separator className="my-8" />
-          <div className="text-center text-sm text-muted-foreground">
-            © 2026 Центр креативных индустрий «База». Нижнекамск
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-sm text-muted-foreground">
+            <span>© 2026 Центр креативных индустрий «База». Нижнекамск</span>
+            <span className="hidden sm:inline">·</span>
+            <Link to="/privacy" className="hover:text-primary transition-colors underline underline-offset-2">
+              Политика конфиденциальности
+            </Link>
           </div>
         </div>
       </footer>
