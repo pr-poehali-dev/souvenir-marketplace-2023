@@ -133,25 +133,33 @@ const Contacts = () => {
 
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
             <div className="space-y-6 sm:space-y-8">
-              <Card className="p-5 sm:p-8 border-2 border-border hover:border-primary transition-all">
-                <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 p-4 rounded-lg">
-                    <Icon
-                      name="MapPin"
-                      size={32}
-                      className="text-primary"
-                    />
+              <a
+                href="https://yandex.ru/maps/?text=Нижнекамск+Центр+креативных+индустрий+База"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <Card className="p-5 sm:p-8 border-2 border-border hover:border-primary transition-all cursor-pointer">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-primary/10 p-4 rounded-lg">
+                      <Icon
+                        name="MapPin"
+                        size={32}
+                        className="text-primary"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-bold mb-2">АДРЕС</h3>
+                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                        г. Нижнекамск, Республика Татарстан
+                        <br />
+                        Центр креативных индустрий «База»
+                      </p>
+                      <p className="text-xs text-primary mt-2 font-medium">Открыть в Яндекс Картах →</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-bold mb-2">АДРЕС</h3>
-                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                      г. Нижнекамск, Республика Татарстан
-                      <br />
-                      Центр креативных индустрий «База»
-                    </p>
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </a>
 
               <Card className="p-5 sm:p-8 border-2 border-border hover:border-primary transition-all">
                 <div className="flex items-start gap-4">
