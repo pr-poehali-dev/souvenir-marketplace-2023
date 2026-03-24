@@ -326,12 +326,23 @@ const About = () => {
               <div className="flex items-center gap-3">
                 <Icon name="MessageCircle" size={24} className="text-primary" />
                 <a
-                  href="https://t.me/nkbaza"
+                  href="https://t.me/nkBaza"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-lg hover:text-primary transition-colors"
                 >
-                  @nkbaza
+                  Telegram
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Icon name="Users" size={24} className="text-primary" />
+                <a
+                  href="https://vk.com/bazik_nk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg hover:text-primary transition-colors"
+                >
+                  ВКонтакте
                 </a>
               </div>
               <div className="flex items-center gap-3">
