@@ -391,7 +391,8 @@ const About = () => {
               <div className="flex flex-col gap-2 text-sm text-muted-foreground">
                 <p>+7 950 317-13-77</p>
                 <p>+7 (8555) 32-38-48</p>
-                <p>@nkbaza</p>
+                <a href="https://vk.com/bazik_nk" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">ВКонтакте</a>
+                <a href="https://t.me/nkBaza" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Telegram</a>
               </div>
             </div>
           </div>
