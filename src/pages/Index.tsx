@@ -319,7 +319,7 @@ const Index = () => {
               <span className="text-primary">БАЗЫ</span>
             </h1>
             <p className="text-base sm:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl">
-              Уникальные изделия ручной работы от мастеров Центра креативных индустрий в Нижнекамске
+              Уникальные изделия ручной работы от мастеров Центра креативных индустрий "БАЗА" в г. Нижнекамске
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold w-full sm:w-auto" asChild>
