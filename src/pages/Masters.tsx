@@ -174,13 +174,13 @@ const Masters = () => {
               >
                 Мастера
               </Link>
-              <a href="#about" className="hover:text-primary transition-colors font-medium">
+              <a href="/#about" className="hover:text-primary transition-colors font-medium">
                 О центре
               </a>
-              <a href="#delivery" className="hover:text-primary transition-colors font-medium">
+              <a href="/#delivery" className="hover:text-primary transition-colors font-medium">
                 Доставка
               </a>
-              <a href="#contacts" className="hover:text-primary transition-colors font-medium">
+              <a href="/#contacts" className="hover:text-primary transition-colors font-medium">
                 Контакты
               </a>
             </nav>
@@ -220,13 +220,13 @@ const Masters = () => {
                 >
                   Мастера
                 </Link>
-                <a href="#about" className="hover:text-primary transition-colors font-medium">
+                <a href="/#about" className="hover:text-primary transition-colors font-medium">
                   О центре
                 </a>
-                <a href="#delivery" className="hover:text-primary transition-colors font-medium">
+                <a href="/#delivery" className="hover:text-primary transition-colors font-medium">
                   Доставка
                 </a>
-                <a href="#contacts" className="hover:text-primary transition-colors font-medium">
+                <a href="/#contacts" className="hover:text-primary transition-colors font-medium">
                   Контакты
                 </a>
               </div>
