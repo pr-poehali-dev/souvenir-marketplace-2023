@@ -256,6 +256,15 @@ const Contacts = () => {
                         <Icon name="Send" size={24} className="text-primary" />
                         <span className="text-sm font-medium text-primary">Telegram</span>
                       </a>
+                      <a
+                        href="https://max.ru/id1651051381_gos"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-primary/10 hover:bg-primary/20 p-3 rounded-lg transition-colors flex items-center gap-2"
+                      >
+                        <Icon name="Zap" size={24} className="text-primary" />
+                        <span className="text-sm font-medium text-primary">MAX</span>
+                      </a>
                     </div>
                   </div>
                 </div>
