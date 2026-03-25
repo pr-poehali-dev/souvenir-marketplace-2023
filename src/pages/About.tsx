@@ -12,39 +12,6 @@ const About = () => {
   const [cartItems] = useState([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const features: Array<{icon: string; title: string; description: string}> = [
-    {
-      icon: "Music",
-      title: "Музыка",
-      description: "Студия звукозаписи, концерты и фестивали",
-    },
-    {
-      icon: "Palette",
-      title: "Дизайн и искусство",
-      description: "Мастерские художников и дизайнеров",
-    },
-    {
-      icon: "Camera",
-      title: "Фото и видео",
-      description: "Профессиональные студии для съемок",
-    },
-    {
-      icon: "Shapes",
-      title: "Керамика",
-      description: "Гончарные мастерские и обжиг",
-    },
-    {
-      icon: "Scissors",
-      title: "Текстиль",
-      description: "Швейные мастерские и дизайн одежды",
-    },
-    {
-      icon: "Sparkles",
-      title: "Танцы",
-      description: "Танцевальные залы и мастер-классы",
-    },
-  ];
-
   const stats = [
     { value: "10 000+", label: "Кв. метров площади" },
     { value: "21", label: "Постоянных резидентов" },
