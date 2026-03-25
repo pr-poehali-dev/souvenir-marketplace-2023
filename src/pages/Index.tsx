@@ -732,13 +732,6 @@ const Index = () => {
                   <div className="flex items-start gap-3">
                     <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
                     <div>
-                      <p className="font-semibold text-foreground">Онлайн-оплата картой</p>
-                      <p className="text-sm">Безопасная оплата через платежную систему</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
-                    <div>
                       <p className="font-semibold text-foreground">Оплата при получении</p>
                       <p className="text-sm">Наличными или картой при самовывозе</p>
                     </div>
