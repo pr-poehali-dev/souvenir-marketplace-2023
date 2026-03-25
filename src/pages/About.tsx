@@ -46,10 +46,10 @@ const About = () => {
   ];
 
   const stats = [
-    { value: "2000+", label: "Кв. метров пространства" },
-    { value: "50+", label: "Творческих резидентов" },
-    { value: "100+", label: "Мероприятий в месяц" },
-    { value: "5000+", label: "Посетителей ежемесячно" },
+    { value: "10 000+", label: "Кв. метров площади" },
+    { value: "21", label: "Постоянных резидентов" },
+    { value: "500+", label: "Мероприятий за 2024–2025 г." },
+    { value: "120 000+", label: "Человек охвачено" },
   ];
 
   return (
@@ -243,47 +243,72 @@ const About = () => {
 
             <div className="space-y-6 sm:space-y-8 text-base sm:text-lg">
               <div>
-                <h3 className="text-2xl font-bold mb-4 text-primary">Наша миссия</h3>
+                <h3 className="text-2xl font-bold mb-4 text-primary">О центре</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Центр креативных индустрий «База» — это современное пространство для развития
-                  творческого потенциала в Нижнекамске. Мы создаём благоприятную среду для
-                  резидентов из разных сфер искусства: музыки, танцев, дизайна, керамики,
-                  текстиля и многого другого.
+                  Муниципальное автономное учреждение «Центр креативных индустрий «База» — это новый уникальный проект в Республике Татарстан, появившийся в г. Нижнекамск благодаря поддержке руководства Республики Татарстан и ПАО «СИБУР Холдинг».
+                </p>
+                <p className="text-muted-foreground leading-relaxed mt-3">
+                  Объект представляет собой комплекс из 3 основных зданий, 2 ангаров и 36 боксов (общей площадью более 10 тысяч кв.м.) и более 2 га придомовой территории — специализированную площадку для поддержки и развития креативных индустрий в Нижнекамском муниципальном районе.
                 </p>
               </div>
 
               <Separator />
 
               <div>
-                <h3 className="text-2xl font-bold mb-4 text-primary">Инфраструктура</h3>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  «База» располагается по адресу: <strong>ул. Лесная, 53, 55</strong> и включает
-                  в себя:
+                <h3 className="text-2xl font-bold mb-4 text-primary">Наша миссия</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Основная миссия «Базы» — содействие в создании благоприятных условий для реализации творческих способностей и профессиональных навыков предпринимателей, занятых в сфере креативных индустрий. На «Базе» предоставляется возможность для обучения, обмена опытом и разработки новых проектов и стартапов в области креативной экономики.
                 </p>
+              </div>
+
+              <Separator />
+
+              <div>
+                <h3 className="text-2xl font-bold mb-4 text-primary">Задачи центра</h3>
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex items-start gap-3">
                     <Icon name="Check" size={20} className="text-primary mt-1 shrink-0" />
-                    <span>Студию звукозаписи для музыкантов</span>
+                    <span>Создание условий для развития творческих индустрий</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Icon name="Check" size={20} className="text-primary mt-1 shrink-0" />
-                    <span>Танцевальные залы для мастер-классов и фестивалей</span>
+                    <span>Развитие инфраструктуры для творческих индустрий</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Icon name="Check" size={20} className="text-primary mt-1 shrink-0" />
-                    <span>Гончарные мастерские с профессиональным оборудованием</span>
+                    <span>Продвижение творческих индустрий на рынке</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Icon name="Check" size={20} className="text-primary mt-1 shrink-0" />
-                    <span>Швейные мастерские для дизайнеров текстиля</span>
+                    <span>Сотрудничество с другими организациями</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Icon name="Check" size={20} className="text-primary mt-1 shrink-0" />
-                    <span>Фото- и видеостудии для съёмок</span>
+                    <span>Обучение и развитие специалистов в творческих индустриях</span>
+                  </li>
+                </ul>
+              </div>
+
+              <Separator />
+
+              <div>
+                <h3 className="text-2xl font-bold mb-4 text-primary">Инфраструктура</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-1 shrink-0" />
+                    <span>Два больших универсальных зала для концертов, тренингов, семинаров и конференций</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <Icon name="Check" size={20} className="text-primary mt-1 shrink-0" />
-                    <span>Выставочные пространства для демонстрации работ</span>
+                    <span>Школа креативных индустрий: студии современной электронной музыки, звукорежиссуры, 2D/3D анимации, фото и видеопроизводства, интерактивных цифровых технологий и графического дизайна</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-1 shrink-0" />
+                    <span>Кафе и коворкинг-зона для работы и отдыха</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-1 shrink-0" />
+                    <span>Универсальные помещения и Event-холл для мероприятий</span>
                   </li>
                 </ul>
               </div>
@@ -292,11 +317,11 @@ const About = () => {
 
               <div>
                 <h3 className="text-2xl font-bold mb-4 text-primary">Резиденты</h3>
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  На сегодняшний день на «Базе» уже <strong className="text-foreground">21 резидент</strong> ведёт свою деятельность на постоянной основе: гончарная и ювелирная мастерские, художественные студии, студия видеопродакшена полного цикла, школы барменов и паркура, детские развивающие центры, семейная фотостудия, школа иностранных языков, центр по работе с релокантами «Локация», вокальная студия, музыкально-продюсерский центр, фитнес-центр, студии танцев.
+                </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  «База» объединяет талантливых дизайнеров, художников, музыкантов и
-                  предпринимателей, создавая пространство для вдохновения и сотрудничества. В
-                  центре каждый найдет занятие по душе и сможет полностью раскрыть творческий
-                  потенциал!
+                  Суммарная выручка постоянных резидентов за 2025 год превысила <strong className="text-foreground">16 млн рублей</strong>.
                 </p>
               </div>
 
@@ -305,21 +330,37 @@ const About = () => {
               <div>
                 <h3 className="text-2xl font-bold mb-4 text-primary">Мероприятия</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  На территории центра регулярно проходят мастер-классы, концерты, выставки,
-                  фестивали и творческие встречи. Мы поддерживаем программу «Пушкинская карта»,
-                  открывая двери для молодёжи к миру искусства и культуры.
+                  Более 100 резидентов разово организовали свои мероприятия на «Базе». За 2024–2025 гг. прошло более <strong className="text-foreground">500 мероприятий</strong> различного формата, из них 74 крупных и знаковых для Нижнекамска и Республики Татарстан в целом. Проведено <strong className="text-foreground">962 мастер-класса</strong> по различным видам изобразительного и прикладного творчества. Общий охват населения — более <strong className="text-foreground">120 000 человек</strong>.
                 </p>
               </div>
 
               <Separator />
 
               <div>
-                <h3 className="text-2xl font-bold mb-4 text-primary">Развитие</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  В 2024-2025 годах на благоустройство территории центра было выделено 64
-                  миллиона рублей. Территория вокруг «Базы» приобретает современный облик,
-                  становясь ещё более комфортной для резидентов и посетителей.
-                </p>
+                <h3 className="text-2xl font-bold mb-4 text-primary">Целевая аудитория</h3>
+                <p className="text-muted-foreground leading-relaxed mb-3">«База» открыта для тех, кто:</p>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-1 shrink-0" />
+                    <span>Уже реализует себя в творческом направлении и хочет развиваться</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-1 shrink-0" />
+                    <span>Имеет интересные идеи или проекты</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-1 shrink-0" />
+                    <span>Стремится к творческой самореализации</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-1 shrink-0" />
+                    <span>Желает развивать креативные компетенции</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-1 shrink-0" />
+                    <span>Хочет развиваться в сфере креативных индустрий</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
