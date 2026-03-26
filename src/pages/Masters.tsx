@@ -341,6 +341,26 @@ const Masters = () => {
                       </TabsList>
 
                       <TabsContent value="portfolio">
+                        {master.id === 4 && (
+                          <Card className="mb-4 p-4 border-primary border-2 bg-primary/5">
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                              <div>
+                                <p className="font-black text-lg">Вся серия «Milli mon»</p>
+                                <p className="text-sm text-muted-foreground">4 авторских полотна · холодный батик · шёлк туаль</p>
+                              </div>
+                              <div className="flex flex-col items-end gap-2 shrink-0">
+                                <p className="text-2xl font-black text-primary">42 000₽</p>
+                                <Button
+                                  onClick={() => addToCart({ id: 999, title: "Серия «Milli mon» — 4 полотна", price: 42000 })}
+                                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+                                >
+                                  <Icon name="ShoppingCart" size={18} className="mr-2" />
+                                  КУПИТЬ ВСЮ СЕРИЮ
+                                </Button>
+                              </div>
+                            </div>
+                          </Card>
+                        )}
                         <div className="grid grid-cols-2 gap-4">
                           {master.portfolio.map((item) => (
                             <Card
