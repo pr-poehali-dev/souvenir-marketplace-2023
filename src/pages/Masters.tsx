@@ -80,9 +80,31 @@ const masters = [
     portfolio: [
       {
         id: 7,
-        image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/files/96bb79bc-9647-44c6-83f7-9e40b77d3113.jpg",
-        title: "Платок с этническими узорами",
-        price: 2500,
+        image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/bucket/c652b4d9-b946-4a00-a4d6-9c0fec1d7179.jpg",
+        title: "Серия «Milli mon» — полотно №1\nШёлковая живопись • холодный батик • 50×100 см • натуральный шёлк туаль • гусиные перья • бамбуковые палочки\nАвторская работа с чертами национальных традиций.\n«Milli mon»: воплощение души татарского народа в авторском видении художника Диляры Закировой",
+        price: 12000,
+        contain: true,
+      },
+      {
+        id: 71,
+        image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/bucket/009b0cc1-1ab3-484b-8cd0-1d1f3ff437ac.jpg",
+        title: "Серия «Milli mon» — полотно №2\nШёлковая живопись • холодный батик • 50×100 см • натуральный шёлк туаль • гусиные перья • бамбуковые палочки\nАвторская работа с чертами национальных традиций.",
+        price: 12000,
+        contain: true,
+      },
+      {
+        id: 72,
+        image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/bucket/70b001bc-a1d7-4637-820b-abbf3729016f.jpg",
+        title: "Серия «Milli mon» — полотно №3\nШёлковая живопись • холодный батик • 50×100 см • натуральный шёлк туаль • гусиные перья • бамбуковые палочки\nАвторская работа с чертами национальных традиций.",
+        price: 12000,
+        contain: true,
+      },
+      {
+        id: 73,
+        image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/bucket/c077b329-dc23-4b0b-986a-b2357cf31d72.jpg",
+        title: "Серия «Milli mon» — полотно №4\nШёлковая живопись • холодный батик • 50×100 см • натуральный шёлк туаль • гусиные перья • бамбуковые палочки\nАвторская работа с чертами национальных традиций.",
+        price: 12000,
+        contain: true,
       },
       {
         id: 8,
@@ -325,22 +347,26 @@ const Masters = () => {
                               key={item.id}
                               className="overflow-hidden group hover:border-primary transition-all"
                             >
-                              <div className="aspect-square overflow-hidden bg-muted">
+                              <div className={`overflow-hidden bg-muted flex items-center justify-center ${"contain" in item && item.contain ? "p-2" : "aspect-square"}`}>
                                 <img
                                   src={item.image}
                                   alt={item.title}
-                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                  className={`group-hover:scale-105 transition-transform duration-300 ${"contain" in item && item.contain ? "w-full h-auto object-contain" : "w-full h-full object-cover"}`}
                                 />
                               </div>
                               <div className="p-4">
-                                <h3 className="font-bold mb-2 group-hover:text-primary transition-colors">
+                                <h3 className="font-bold mb-2 group-hover:text-primary transition-colors whitespace-pre-line">
                                   {item.title}
                                 </h3>
-                                <div className="flex items-center justify-between gap-2 mb-3">
+                                <div className="flex items-center justify-between gap-2 mb-1">
                                   <p className="text-xl font-black text-primary">
-                                    {item.price.toLocaleString()}₽
+                                    {item.price.toLocaleString()}₽/полотно
                                   </p>
                                 </div>
+                                {"contain" in item && item.contain && (
+                                  <p className="text-xs text-muted-foreground mb-3">Вся серия «Milli mon» (4 полотна) — 42&nbsp;000₽</p>
+                                )}
+                                {!("contain" in item && item.contain) && <div className="mb-3" />}
                                 <Button
                                   onClick={() => addToCart(item)}
                                   className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
