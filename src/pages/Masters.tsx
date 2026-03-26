@@ -357,26 +357,26 @@ const Masters = () => {
 
                       <TabsContent value="portfolio">
                         {master.id === 4 && (
-                          <Card className="mb-4 p-4 border-primary border-2 bg-primary/5">
-                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                          <Card className="mb-4 p-3 sm:p-4 border-primary border-2 bg-primary/5">
+                            <div className="flex flex-col gap-3">
                               <div>
-                                <p className="font-black text-lg">Вся серия «Milli mon»</p>
-                                <p className="text-sm text-muted-foreground">4 авторских полотна · холодный батик · шёлк туаль</p>
+                                <p className="font-black text-base sm:text-lg">Вся серия «Milli mon»</p>
+                                <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">4 авторских полотна · холодный батик · шёлк туаль</p>
                               </div>
-                              <div className="flex flex-col items-end gap-2 shrink-0">
-                                <p className="text-2xl font-black text-primary">42 000₽</p>
+                              <div className="flex items-center justify-between gap-3">
+                                <p className="text-xl sm:text-2xl font-black text-primary">42 000₽</p>
                                 <Button
                                   onClick={() => addToCart({ id: 999, title: "Серия «Milli mon» — 4 полотна", price: 42000 })}
-                                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+                                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-xs sm:text-sm"
                                 >
-                                  <Icon name="ShoppingCart" size={18} className="mr-2" />
+                                  <Icon name="ShoppingCart" size={16} className="mr-1.5" />
                                   КУПИТЬ ВСЮ СЕРИЮ
                                 </Button>
                               </div>
                             </div>
                           </Card>
                         )}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                           {master.portfolio.map((item) => (
                             <Card
                               key={item.id}
@@ -389,19 +389,19 @@ const Masters = () => {
                                   className={`group-hover:scale-105 transition-transform duration-300 ${"contain" in item && item.contain ? "w-full h-auto object-contain" : "w-full h-full object-cover"}`}
                                 />
                               </div>
-                              <div className="p-4">
-                                <h3 className="font-bold mb-2 group-hover:text-primary transition-colors whitespace-pre-line">
+                              <div className="p-3 sm:p-4">
+                                <h3 className="font-bold text-sm sm:text-base mb-2 group-hover:text-primary transition-colors whitespace-pre-line">
                                   {item.title}
                                 </h3>
                                 <div className="flex items-center justify-between gap-2 mb-1">
-                                  <p className="text-xl font-black text-primary">
-                                    {item.price.toLocaleString()}₽/полотно
+                                  <p className="text-lg sm:text-xl font-black text-primary">
+                                    {item.price.toLocaleString()}₽{"contain" in item && item.contain && item.id >= 7 && item.id <= 73 ? "/полотно" : ""}
                                   </p>
                                 </div>
-                                {"contain" in item && item.contain && (
+                                {"contain" in item && item.contain && item.id >= 7 && item.id <= 73 && (
                                   <p className="text-xs text-muted-foreground mb-3">Вся серия «Milli mon» (4 полотна) — 42&nbsp;000₽</p>
                                 )}
-                                {!("contain" in item && item.contain) && <div className="mb-3" />}
+                                {(!("contain" in item && item.contain && item.id >= 7 && item.id <= 73)) && <div className="mb-3" />}
                                 <Button
                                   onClick={() => addToCart(item)}
                                   className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
