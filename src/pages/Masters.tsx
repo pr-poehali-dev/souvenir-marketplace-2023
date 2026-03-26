@@ -108,9 +108,10 @@ const masters = [
       },
       {
         id: 8,
-        image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/files/78e50d38-fc95-4060-ad1d-c7d2ecf99f5b.jpg",
-        title: "Роспись кожи",
-        price: 3800,
+        image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/bucket/60789abd-db38-4128-86fd-66eaaaa3fe87.jpg",
+        title: "«Мой Барсик»\nШёлковый платок 50×50 см • холодный батик • натуральный шёлк\nВ центре — белый барс, символ Татарстана, в игривой и образной манере. Национальные мотивы, переосмысленные в современном ключе. Ручная роспись подчёркивает индивидуальность каждого изделия.",
+        price: 2000,
+        contain: true,
       },
     ],
     achievements: [
