@@ -292,11 +292,11 @@ const Masters = () => {
               >
                 <div className="grid lg:grid-cols-[400px_1fr] gap-6 sm:gap-8 p-5 sm:p-8">
                   <div>
-                    <div className="aspect-square max-h-64 sm:max-h-80 lg:max-h-none overflow-hidden bg-muted mb-6">
+                    <div className="overflow-hidden bg-muted mb-6 rounded-lg">
                       <img
                         src={master.image}
                         alt={master.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-auto object-contain"
                       />
                     </div>
                     <div className="space-y-4">
