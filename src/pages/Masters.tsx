@@ -17,7 +17,7 @@ const masters = [
     bio: "Творческая группа, создающая посуду и предметы интерьера ручной работы из глины. Стаж работы более 6 лет. Работаем с разными видами глин и в разных техниках.",
     experience: "6+ лет",
     productsCount: 24,
-    image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/files/845a6166-c30a-43f1-92a6-4b70e95c5a04.jpg",
+    image: "https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/bucket/d2692826-f5e4-4bfd-8b6d-ab45f19debac.jpg",
     portfolio: [
       {
         id: 1,
