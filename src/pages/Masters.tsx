@@ -439,7 +439,7 @@ const Masters = () => {
       </section>
 
       {notification.show && (
-        <div className="fixed bottom-8 right-8 z-50 animate-fade-in">
+        <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 animate-fade-in">
           <Card className="p-4 shadow-lg border-primary bg-card">
             <div className="flex items-center gap-3">
               <div className="bg-primary/10 p-2 rounded-full">
