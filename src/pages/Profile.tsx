@@ -162,10 +162,10 @@ const Profile = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-8 sm:py-12">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-8">
-            <h1 className="text-4xl font-black mb-2">ЛИЧНЫЙ КАБИНЕТ</h1>
+          <div className="mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-4xl font-black mb-2">ЛИЧНЫЙ КАБИНЕТ</h1>
             <p className="text-muted-foreground">
               Добро пожаловать, <span className="font-bold">{user.full_name}</span>!
             </p>
@@ -272,7 +272,7 @@ const Profile = () => {
             </TabsContent>
 
             <TabsContent value="profile">
-              <Card className="p-8">
+              <Card className="p-4 sm:p-8">
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-2xl font-black">ИНФОРМАЦИЯ О ПРОФИЛЕ</h2>
                   {!isEditing && (
@@ -404,7 +404,7 @@ const Profile = () => {
             </TabsContent>
 
             <TabsContent value="consent">
-              <Card className="p-8">
+              <Card className="p-4 sm:p-8">
                 <h2 className="text-2xl font-black mb-2">СОГЛАСИЕ НА ОБРАБОТКУ ДАННЫХ</h2>
                 <p className="text-muted-foreground mb-8">
                   Управление вашим согласием на обработку персональных данных в соответствии с ФЗ №152.

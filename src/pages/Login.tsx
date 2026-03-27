@@ -175,16 +175,16 @@ const Login = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-8 sm:py-12">
         <div className="max-w-md mx-auto">
-          <div className="mb-8 text-center">
-            <h1 className="text-4xl font-black mb-2">ВХОД И РЕГИСТРАЦИЯ</h1>
+          <div className="mb-6 sm:mb-8 text-center">
+            <h1 className="text-2xl sm:text-4xl font-black mb-2">ВХОД И РЕГИСТРАЦИЯ</h1>
             <p className="text-muted-foreground">
               Войдите или создайте аккаунт для оформления заказов
             </p>
           </div>
 
-          <Card className="p-8">
+          <Card className="p-4 sm:p-8">
             <Tabs defaultValue="login" className="w-full">
               <TabsList className="grid w-full grid-cols-2 mb-6">
                 <TabsTrigger value="login" className="font-bold">

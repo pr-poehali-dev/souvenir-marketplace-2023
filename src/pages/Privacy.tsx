@@ -71,10 +71,10 @@ const Privacy = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-8 sm:py-12">
         <div className="max-w-3xl mx-auto">
-          <div className="mb-10">
-            <h1 className="text-4xl font-black mb-3">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</h1>
+          <div className="mb-6 sm:mb-10">
+            <h1 className="text-2xl sm:text-4xl font-black mb-3">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</h1>
             <p className="text-muted-foreground">
               Последнее обновление: март 2026 г.
             </p>
