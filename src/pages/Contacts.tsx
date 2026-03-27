@@ -12,6 +12,7 @@ import MaxButton from "@/components/MaxButton";
 
 const Contacts = () => {
   const { toast } = useToast();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -90,31 +91,11 @@ const Contacts = () => {
               </div>
             </Link>
 
-            <nav className="flex items-center gap-6">
-              <Link
-                to="/"
-                className="hover:text-primary transition-colors font-medium"
-              >
-                Каталог
-              </Link>
-              <Link
-                to="/masters"
-                className="hover:text-primary transition-colors font-medium"
-              >
-                Мастера
-              </Link>
-              <Link
-                to="/about"
-                className="hover:text-primary transition-colors font-medium"
-              >
-                О центре
-              </Link>
-              <Link
-                to="/contacts"
-                className="text-primary transition-colors font-medium"
-              >
-                Контакты
-              </Link>
+            <nav className="hidden lg:flex items-center gap-6">
+              <Link to="/" className="hover:text-primary transition-colors font-medium">Каталог</Link>
+              <Link to="/masters" className="hover:text-primary transition-colors font-medium">Мастера</Link>
+              <Link to="/about" className="hover:text-primary transition-colors font-medium">О центре</Link>
+              <Link to="/contacts" className="text-primary transition-colors font-medium">Контакты</Link>
             </nav>
 
             <div className="flex items-center gap-2">
@@ -127,8 +108,22 @@ const Contacts = () => {
               <a href="https://max.ru/id1651051381_gos" target="_blank" rel="noopener noreferrer" className="hidden lg:flex items-center justify-center w-9 h-9 rounded-md hover:bg-accent transition-colors text-muted-foreground hover:text-primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="6" fill="#7B2BF9"/><text x="12" y="17" textAnchor="middle" fill="white" fontSize="13" fontWeight="bold" fontFamily="Arial, sans-serif">M</text></svg>
               </a>
+              <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                <Icon name={mobileMenuOpen ? "X" : "Menu"} size={24} />
+              </Button>
             </div>
           </div>
+
+          {mobileMenuOpen && (
+            <nav className="lg:hidden py-4 border-t border-border animate-fade-in">
+              <div className="flex flex-col gap-4">
+                <Link to="/" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>Каталог</Link>
+                <Link to="/masters" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>Мастера</Link>
+                <Link to="/about" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>О центре</Link>
+                <Link to="/contacts" className="text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>Контакты</Link>
+              </div>
+            </nav>
+          )}
         </div>
       </header>
 

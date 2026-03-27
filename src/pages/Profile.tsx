@@ -147,13 +147,13 @@ const Profile = () => {
           {mobileMenuOpen && (
             <nav className="lg:hidden py-4 border-t border-border animate-fade-in">
               <div className="flex flex-col gap-4">
-                <Link to="/" className="hover:text-primary transition-colors font-medium">
+                <Link to="/" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>
                   Каталог
                 </Link>
-                <Link to="/masters" className="hover:text-primary transition-colors font-medium">
+                <Link to="/masters" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>
                   Мастера
                 </Link>
-                <Link to="/about" className="hover:text-primary transition-colors font-medium">
+                <Link to="/about" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>
                   О центре
                 </Link>
               </div>

@@ -115,9 +115,9 @@ const Login = () => {
               <img 
                 src="https://cdn.poehali.dev/projects/ef132fe9-5a9c-48f7-aa3a-1ab89d055fa5/bucket/7ba2c399-7e05-4810-bdb1-aaf9ff685cb8.jpg" 
                 alt="БАЗА" 
-                className="h-16 w-auto object-contain"
+                className="h-12 sm:h-16 w-auto object-contain"
               />
-              <div className="text-2xl font-black tracking-tight">
+              <div className="text-xl sm:text-2xl font-black tracking-tight">
                 <span className="text-primary">БАЗА</span>
                 <span className="text-foreground text-xs block leading-none mt-1">
                   МАРКЕТПЛЕЙС

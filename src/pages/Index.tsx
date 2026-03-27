@@ -277,19 +277,19 @@ const Index = () => {
           {mobileMenuOpen && (
             <nav className="lg:hidden py-4 border-t border-border animate-fade-in">
               <div className="flex flex-col gap-4">
-                <a href="#catalog" className="hover:text-primary transition-colors font-medium">
+                <a href="#catalog" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>
                   Каталог
                 </a>
-                <Link to="/masters" className="hover:text-primary transition-colors font-medium">
+                <Link to="/masters" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>
                   Мастера
                 </Link>
-                <Link to="/about" className="hover:text-primary transition-colors font-medium">
+                <Link to="/about" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>
                   О центре
                 </Link>
-                <a href="#delivery" className="hover:text-primary transition-colors font-medium">
+                <a href="#delivery" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>
                   Доставка
                 </a>
-                <Link to="/contacts" className="hover:text-primary transition-colors font-medium">
+                <Link to="/contacts" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>
                   Контакты
                 </Link>
                 <div className="flex gap-3 pt-2 border-t border-border">

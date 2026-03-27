@@ -244,22 +244,23 @@ const Masters = () => {
           {mobileMenuOpen && (
             <nav className="lg:hidden py-4 border-t border-border animate-fade-in">
               <div className="flex flex-col gap-4">
-                <Link to="/" className="hover:text-primary transition-colors font-medium">
+                <Link to="/" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>
                   Каталог
                 </Link>
                 <Link
                   to="/masters"
                   className="text-primary hover:text-primary transition-colors font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Мастера
                 </Link>
-                <a href="/#about" className="hover:text-primary transition-colors font-medium">
+                <a href="/#about" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>
                   О центре
                 </a>
-                <a href="/#delivery" className="hover:text-primary transition-colors font-medium">
+                <a href="/#delivery" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>
                   Доставка
                 </a>
-                <a href="/#contacts" className="hover:text-primary transition-colors font-medium">
+                <a href="/#contacts" className="hover:text-primary transition-colors font-medium" onClick={() => setMobileMenuOpen(false)}>
                   Контакты
                 </a>
                 <div className="flex gap-3 pt-2 border-t border-border">
