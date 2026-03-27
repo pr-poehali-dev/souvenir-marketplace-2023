@@ -162,7 +162,7 @@ export const CartDrawer = ({
                           <Button
                             size="icon"
                             variant="outline"
-                            className="h-8 w-8"
+                            className="h-10 w-10"
                             onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
                             disabled={item.quantity <= 1}
                           >
@@ -172,7 +172,7 @@ export const CartDrawer = ({
                           <Button
                             size="icon"
                             variant="outline"
-                            className="h-8 w-8"
+                            className="h-10 w-10"
                             onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
                           >
                             <Icon name="Plus" size={16} />
@@ -183,7 +183,7 @@ export const CartDrawer = ({
                         <Button
                           size="icon"
                           variant="ghost"
-                          className="h-8 w-8"
+                          className="h-10 w-10"
                           onClick={() => onRemoveItem(item.id)}
                         >
                           <Icon name="X" size={16} />

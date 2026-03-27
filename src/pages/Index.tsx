@@ -610,37 +610,37 @@ const Index = () => {
         </DialogContent>
       </Dialog>
 
-      <section className="py-20 bg-card border-y border-border">
+      <section className="py-12 sm:py-20 bg-card border-y border-border">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-4xl lg:text-5xl font-black mb-6">
+          <div className="max-w-4xl mx-auto text-center mb-8 sm:mb-12">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 sm:mb-6">
               О ЦЕНТРЕ <span className="text-primary">«БАЗА»</span>
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-base sm:text-xl text-muted-foreground">
               Центр креативных индустрий в Нижнекамске — это место, где процветает творческий потенциал и воплощаются самые смелые идеи
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-            <Card className="p-6 text-center bg-background">
-              <div className="text-4xl font-black text-primary mb-2">2000+</div>
-              <div className="text-sm text-muted-foreground">Кв. метров пространства</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 mb-10 sm:mb-16">
+            <Card className="p-4 sm:p-6 text-center bg-background">
+              <div className="text-2xl sm:text-4xl font-black text-primary mb-1 sm:mb-2">2000+</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Кв. метров пространства</div>
             </Card>
-            <Card className="p-6 text-center bg-background">
-              <div className="text-4xl font-black text-primary mb-2">50+</div>
-              <div className="text-sm text-muted-foreground">Творческих резидентов</div>
+            <Card className="p-4 sm:p-6 text-center bg-background">
+              <div className="text-2xl sm:text-4xl font-black text-primary mb-1 sm:mb-2">50+</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Творческих резидентов</div>
             </Card>
-            <Card className="p-6 text-center bg-background">
-              <div className="text-4xl font-black text-primary mb-2">100+</div>
-              <div className="text-sm text-muted-foreground">Мероприятий в месяц</div>
+            <Card className="p-4 sm:p-6 text-center bg-background">
+              <div className="text-2xl sm:text-4xl font-black text-primary mb-1 sm:mb-2">100+</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Мероприятий в месяц</div>
             </Card>
-            <Card className="p-6 text-center bg-background">
-              <div className="text-4xl font-black text-primary mb-2">5000+</div>
-              <div className="text-sm text-muted-foreground">Посетителей ежемесячно</div>
+            <Card className="p-4 sm:p-6 text-center bg-background">
+              <div className="text-2xl sm:text-4xl font-black text-primary mb-1 sm:mb-2">5000+</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">Посетителей ежемесячно</div>
             </Card>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
             <Card className="p-6 bg-background">
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
                 <Icon name="Palette" size={28} className="text-primary" />
