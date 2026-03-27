@@ -380,18 +380,20 @@ const Profile = () => {
                       />
                     </div>
 
-                    <div className="flex gap-3">
+                    <div className="flex flex-col sm:flex-row gap-3">
                       <Button
                         type="submit"
-                        className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+                        size="lg"
+                        className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
                         disabled={saving}
                       >
                         {saving ? 'СОХРАНЕНИЕ...' : 'СОХРАНИТЬ'}
                       </Button>
                       <Button
                         type="button"
+                        size="lg"
                         variant="outline"
-                        className="font-bold"
+                        className="w-full sm:w-auto font-bold"
                         onClick={() => setIsEditing(false)}
                         disabled={saving}
                       >

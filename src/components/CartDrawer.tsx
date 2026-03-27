@@ -131,7 +131,7 @@ export const CartDrawer = ({
           </SheetDescription>
         </SheetHeader>
 
-        <div className="flex flex-col h-[calc(100vh-120px)] mt-6">
+        <div className="flex flex-col h-[calc(100dvh-120px)] mt-6">
           {!isCheckout ? (
             <>
               <div className="flex-1 overflow-auto space-y-4">
@@ -293,21 +293,22 @@ export const CartDrawer = ({
                     </span>
                   </div>
 
-                  <div className="flex gap-2 pt-4">
+                  <div className="flex flex-col sm:flex-row gap-2 pt-4">
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+                      disabled={loading}
+                    >
+                      {loading ? 'ОФОРМЛЯЕМ...' : 'ПОДТВЕРДИТЬ ЗАКАЗ'}
+                    </Button>
                     <Button
                       type="button"
                       variant="outline"
-                      className="flex-1 font-bold"
+                      className="w-full font-bold sm:w-auto"
                       onClick={() => setIsCheckout(false)}
                     >
                       НАЗАД
-                    </Button>
-                    <Button
-                      type="submit"
-                      className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
-                      disabled={loading}
-                    >
-                      {loading ? 'ОФОРМЛЯЕМ...' : 'ПОДТВЕРДИТЬ'}
                     </Button>
                   </div>
                 </form>
