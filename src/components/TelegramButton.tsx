@@ -18,7 +18,7 @@ const TelegramButton = ({
   return (
     <button
       onClick={handleClick}
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-[#0088cc] hover:bg-[#006699] text-white p-3 sm:p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 animate-fade-in group"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-[#0088cc] hover:bg-[#006699] text-white w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 animate-fade-in group flex items-center justify-center"
       aria-label="Написать в Telegram"
     >
       <Icon name="Send" size={28} className="drop-shadow-lg" />

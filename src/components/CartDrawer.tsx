@@ -186,7 +186,7 @@ export const CartDrawer = ({
                           className="h-10 w-10"
                           onClick={() => onRemoveItem(item.id)}
                         >
-                          <Icon name="X" size={16} />
+                          <Icon name="X" size={18} />
                         </Button>
                         <p className="font-black text-primary text-lg">
                           {(item.price * item.quantity).toLocaleString()}₽
